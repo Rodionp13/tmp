@@ -13,9 +13,8 @@ class RLMainViewController: UIViewController {
     
     let modelService: ModelService2 = ModelService2.init()
     var collectionView: UICollectionView!
-//    var giphyObjects: [GiphyModel2]?
-    var offset: Int = 0
     let cellID = "mainCell"
+    var offset: Int = 0
     
     let layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -27,12 +26,12 @@ class RLMainViewController: UIViewController {
         return layout
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCollectionView()
         self.setUpSearchBar()
-        self.modelService.startFetchingProcess(with: kTrendingGifsUrl) { [weak self] (res:[Any]) in
-//            self?.giphyObjects = res as? [GiphyModel2]
+        self.modelService.startFetchingProcess(with: kTrendingGifsUrl) { [weak self] in
             self?.collectionView.reloadData()
         }
     }
@@ -52,6 +51,22 @@ class RLMainViewController: UIViewController {
         self.view.addSubview(collectionView)
     }
     
+    func loadAdditionalGifs(_ indexPath: IndexPath) -> Void {
+        let count = self.modelService.gifsCount() - 3
+        if(indexPath.row == count) {
+            self.offset += 25
+            let url: String = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=\(String(self.offset))"
+            self.modelService.startFetchingProcess(with: url) { [weak self] in
+                var indises = [IndexPath]()
+                
+                for idx in (self?.modelService.gifsCount())!-25..<(self?.modelService.gifsCount())! {
+                    indises.append(IndexPath(item: idx, section: 0))
+                }
+                self?.collectionView.insertItems(at: indises)
+            }
+        }
+    }
+    
 }
 
 extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -59,9 +74,6 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.modelService.gifsCount()
-//        if let giphyObjects = self.giphyObjects {
-//            return giphyObjects.count
-//        }
         return count
     }
 
@@ -72,15 +84,9 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         self.loadAdditionalGifs(indexPath)
         
-//        guard var giphyObjects = self.giphyObjects else {
-//            return cell
-//        }
-        
-//        let gif:GiphyModel2 = giphyObjects[indexPath.row]
         guard let gif = self.modelService.getGif(withIndexPath: indexPath) else {
             return cell
         }
-//        let gif: GiphyModel2 = self.modelService.getGif(withIndexPath: indexPath)
         
         if let locationUrl = gif.preview_gif?.locationUrl {
             do {
@@ -89,7 +95,6 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 cell.imgView.image = UIImage.gif(data: data)
             }
         } else {
-//            self.presenter.startFetchingGif(with: gif.preview_gif!.url) { (data:Data?, locationUrl:URL?) in
             self.modelService.startFetchingGif(with: gif.preview_gif!.url) { (data:Data?, locationUrl:URL?) in
                 if let data = data, let locationUrl = locationUrl {
                 gif.preview_gif?.locationUrl = locationUrl
@@ -99,44 +104,28 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 }
             }
         }
+        
         return cell
     }
     
-    func loadAdditionalGifs(_ indexPath: IndexPath) -> Void {
-//        guard self.giphyObjects != nil else  {
-//            return
-//        }
-//        if(indexPath.row == self.giphyObjects!.count - 1) {
-        let count = self.modelService.gifsCount()
-        if(indexPath.row == count - 1) {
-            self.offset += 25
-            let url: String = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=\(String(self.offset))"
-            self.modelService.startFetchingProcess(with: url) { [weak self] (gifsToAdd:[Any]) in
-                let gifsToAdd: [GiphyModel2] = gifsToAdd as! [GiphyModel2]
-//                self?.giphyObjects! += gifsToAdd
-//                self?.modelService.storeGifs(gifsToAdd)
-                var indises = [IndexPath]()
-                
-//                for idx in (self?.giphyObjects!.count)!-25..<(self?.giphyObjects!.count)! {
-                for idx in (self?.modelService.gifsCount())!-25..<(self?.modelService.gifsCount())! {
-                    indises.append(IndexPath(item: idx, section: 0))
-                }
-                self?.collectionView.insertItems(at: indises)
-            }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailedVC = RLDetailedViewController.init(nibName: nil, bundle: nil)
+        if let gif = self.modelService.getGif(withIndexPath: indexPath) {
+        detailedVC.gif? = gif
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         if let gif = self.modelService.getGif(withIndexPath: indexPath) {
-//        if let giphyObjects = self.giphyObjects {
             let height: Double = {
-//                let h = giphyObjects[indexPath.row].preview_gif!.height
                 let h = (gif.preview_gif?.height)!
                 if(h > 180) {
                     return 180
                 }
                 return h
             }()
+            
             return CGSize.init(width: Double(self.view.frame.size.width / 2 - 10), height: height)
         }
         return CGSize.init(width: 0, height: 0)

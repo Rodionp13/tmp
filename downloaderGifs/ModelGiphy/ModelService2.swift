@@ -18,13 +18,13 @@ class ModelService2 {
     private var gifs = Array<GiphyModel2>()
     
     
-    func startFetchingProcess(with url:String, and complition:@escaping ([Any])->Void) -> Void {
+    func startFetchingProcess(with url:String, and complition:@escaping()->Void) -> Void {
         self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
             
             self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
                 let gifs = gifObjects as! [GiphyModel2]
-                self?.gifs.append(contentsOf: gifs)
-                complition(gifObjects! as [Any]);
+                self?.storeGifs(gifs)
+                complition();
             })
         }
     }
@@ -42,7 +42,7 @@ class ModelService2 {
         return gifs[indexPath.row]
     }
     
-    func storeGifs(_ gifs: Array<GiphyModel2>) {
+    public func storeGifs(_ gifs: Array<GiphyModel2>) {
         self.gifs.append(contentsOf: gifs)
     }
     

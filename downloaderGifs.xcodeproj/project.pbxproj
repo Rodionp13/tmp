@@ -15,14 +15,15 @@
 		3D28A5E42130693D0031AA6A /* Presenter2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5E32130693D0031AA6A /* Presenter2.swift */; };
 		3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3504622133FF9700B11184 /* GIF+UIImageView.swift */; };
 		3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D350482213466BE00B11184 /* RLCollectionViewCell.swift */; };
-		3DF840CB212EC07B00E23A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840CA212EC07B00E23A8F /* AppDelegate.m */; };
 		3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840CF212EC07B00E23A8F /* Main.storyboard */; };
 		3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D2212EC07C00E23A8F /* Assets.xcassets */; };
 		3DF840D6212EC07C00E23A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */; };
-		3DF840D9212EC07C00E23A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840D8212EC07C00E23A8F /* main.m */; };
 		3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840E0212EEBE600E23A8F /* GiphyModel.m */; };
 		CE1AEBCE21358CEA0042E421 /* RLMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1AEBCD21358CEA0042E421 /* RLMainView.swift */; };
 		CE351D5921332EB50016B2D5 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = CE351D5821332EB50016B2D5 /* Gif.m */; };
+		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
+		CEDB7503213610BF00528CFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7502213610BF00528CFF /* AppDelegate.m */; };
+		CEDB7505213610DA00528CFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7504213610DA00528CFF /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,18 +40,19 @@
 		3D3504622133FF9700B11184 /* GIF+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF+UIImageView.swift"; sourceTree = "<group>"; };
 		3D350482213466BE00B11184 /* RLCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DF840C6212EC07B00E23A8F /* downloaderGifs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = downloaderGifs.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DF840C9212EC07B00E23A8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3DF840CA212EC07B00E23A8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3DF840D0212EC07B00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DF840D2212EC07C00E23A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF840D5212EC07C00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DF840D7212EC07C00E23A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DF840D8212EC07C00E23A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DF840DF212EEBE600E23A8F /* GiphyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiphyModel.h; sourceTree = "<group>"; };
 		3DF840E0212EEBE600E23A8F /* GiphyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiphyModel.m; sourceTree = "<group>"; };
 		CE1AEBCD21358CEA0042E421 /* RLMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMainView.swift; sourceTree = "<group>"; };
 		CE351D5721332EB50016B2D5 /* Gif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
 		CE351D5821332EB50016B2D5 /* Gif.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
+		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
+		CEDB7501213610BF00528CFF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEDB7502213610BF00528CFF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEDB7504213610DA00528CFF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +95,13 @@
 			path = ModelGiphy;
 			sourceTree = "<group>";
 		};
-		3D28A5D7213031E50031AA6A /* RLPresenter */ = {
+		3D28A5D7213031E50031AA6A /* RLDetailedViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */,
 				3D28A5E32130693D0031AA6A /* Presenter2.swift */,
 			);
-			path = RLPresenter;
+			path = RLDetailedViewController;
 			sourceTree = "<group>";
 		};
 		3DF840BD212EC07B00E23A8F = {
@@ -120,12 +123,12 @@
 		3DF840C8212EC07B00E23A8F /* downloaderGifs */ = {
 			isa = PBXGroup;
 			children = (
+				CEDB7501213610BF00528CFF /* AppDelegate.h */,
+				CEDB7502213610BF00528CFF /* AppDelegate.m */,
 				CE1AEBCD21358CEA0042E421 /* RLMainView.swift */,
-				3DF840C9212EC07B00E23A8F /* AppDelegate.h */,
-				3DF840CA212EC07B00E23A8F /* AppDelegate.m */,
 				3D28A5DD213043EE0031AA6A /* RLMainViewController.swift */,
 				3D350482213466BE00B11184 /* RLCollectionViewCell.swift */,
-				3D28A5D7213031E50031AA6A /* RLPresenter */,
+				3D28A5D7213031E50031AA6A /* RLDetailedViewController */,
 				3D28A5D0212FFCCC0031AA6A /* ModelGiphy */,
 				3D28A5CF212FFCB30031AA6A /* RLDownloader */,
 				3D28A5CE212FFCA50031AA6A /* RLJsonParser */,
@@ -134,8 +137,8 @@
 				3DF840CF212EC07B00E23A8F /* Main.storyboard */,
 				3DF840D2212EC07C00E23A8F /* Assets.xcassets */,
 				3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */,
+				CEDB7504213610DA00528CFF /* main.m */,
 				3DF840D7212EC07C00E23A8F /* Info.plist */,
-				3DF840D8212EC07C00E23A8F /* main.m */,
 			);
 			path = downloaderGifs;
 			sourceTree = "<group>";
@@ -227,13 +230,14 @@
 				3D28A5CD212FFC2F0031AA6A /* RLJsonParser.m in Sources */,
 				3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */,
 				CE351D5921332EB50016B2D5 /* Gif.m in Sources */,
-				3DF840D9212EC07C00E23A8F /* main.m in Sources */,
-				3DF840CB212EC07B00E23A8F /* AppDelegate.m in Sources */,
 				3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */,
+				CEDB7503213610BF00528CFF /* AppDelegate.m in Sources */,
 				3D28A5C9212FFADC0031AA6A /* RLDownloader.m in Sources */,
 				3D28A5E42130693D0031AA6A /* Presenter2.swift in Sources */,
 				3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */,
 				3D28A5E0213045F20031AA6A /* GiphyModel2.swift in Sources */,
+				CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */,
+				CEDB7505213610DA00528CFF /* main.m in Sources */,
 				3D28A5E2213051C50031AA6A /* ModelService2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
