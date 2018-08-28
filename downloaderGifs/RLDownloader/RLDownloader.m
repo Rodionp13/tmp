@@ -21,7 +21,11 @@ static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trendi
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         NSDictionary *dataDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        complition(dataDict);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complition(dataDict);
+        });
+        
     }];
     [dataTask resume];
 }
@@ -39,7 +43,10 @@ static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trendi
         NSURL *desctinationUrl = [cacheDirectory URLByAppendingPathComponent:[originalUrl lastPathComponent]];
         [defaultManager copyItemAtURL:location toURL:desctinationUrl error:nil];
         
-        complition(desctinationUrl);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complition(desctinationUrl);
+        });
+        
     }];
     [downloadTask resume];
 }

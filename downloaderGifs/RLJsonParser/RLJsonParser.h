@@ -13,5 +13,5 @@
 
 @interface RLJsonParser : NSObject
 
-- (void)parseFetchedJsonDataWithDict:(NSDictionary *)fetchedJsonData withComplition:(void(^)(NSArray*transformedData))complition;
+- (void)parseFetchedJsonDataWithDict:(NSDictionary *)fetchedJsonData withComplition:(void(^)(NSArray*gifObjects))complition;
 @end

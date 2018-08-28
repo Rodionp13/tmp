@@ -12,8 +12,8 @@ class Presenter2 {
     let modelService: ModelService2 = ModelService2.init()
     
     func startWithComplition(complition:@escaping([Any])->Void) -> Void {
-        self.modelService.createGifObjects { (res) in
-            complition(res)
+        self.modelService.startFetchingProcessWithComplition { (gif:[Any]) in
+            complition(gif)
         }
     }
     

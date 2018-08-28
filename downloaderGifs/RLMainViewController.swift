@@ -19,10 +19,10 @@ class RLMainViewController: UIViewController {
         super.viewDidLoad()
         print("sgdf")
         self.setupCollectionView()
+        
         self.presenter.startWithComplition(complition: { [weak self] (res:[Any]) in
             self?.giphyObjects = res as? [GiphyModel2]
             self?.collectionView.reloadData()
-//            print("\(res)")
         })
     }
     
@@ -68,52 +68,41 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         let gif:GiphyModel2 = giphyObjects[indexPath.row]
-//        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
-        //=====//
-//        if gif.preview.locationUrl != nil {
-//            do {
-//                let data:Data = try! Data.init(contentsOf: gif.preview.locationUrl!)
-//                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-//                cell.imgView.image = UIImage.gif(data: data)
-//            }
-//        } else {
-//            self.presenter.modelService.downloader.fetchGif(withUrl: gif.preview.url) { (location: URL?) in
-//                gif.preview.locationUrl = location
-//                do {
-//                    let data:Data = try! Data.init(contentsOf: location!)
-//                    DispatchQueue.main.async {
-//                        cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-//                        cell.imgView.image = UIImage.gif(data: data)
-//                    }
-//                }
-//            }
-//        }
-        //======//
-        if(indexPath.row == giphyObjects.count - 1) {
-            
-            DispatchQueue.global().async {
-                self.presenter.startWithComplition { [weak self] (res:[Any]) in
-                    let arrToAdd: [GiphyModel2] = res as! [GiphyModel2]
-                    giphyObjects.append(contentsOf: arrToAdd)
-                    self?.giphyObjects?.append(contentsOf: arrToAdd)
-                    //                print(giphyObjects)
-                    DispatchQueue.main.async {
-                        self?.collectionView.reloadData()
-                    }
+        
+        if let locationUrl = gif.preview_gif?.locationUrl {
+            do {
+                let data:Data = try! Data.init(contentsOf: locationUrl)
+                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+                cell.imgView.image = UIImage.gif(data: data)
+            }
+        } else {
+            self.presenter.modelService.downloader.fetchGif(withUrl: gif.preview_gif?.url) { (locationUrl: URL?) in
+                gif.preview_gif?.locationUrl = locationUrl
+                do {
+                    let data:Data = try! Data.init(contentsOf: gif.preview_gif!.locationUrl!)
+                        cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+                        cell.imgView.image = UIImage.gif(data: data)
                 }
             }
         }
-        
+        //======//
+        if(indexPath.row == giphyObjects.count - 1) {
+            self.presenter.startWithComplition { [weak self] (res:[Any]) in
+                let arrToAdd: [GiphyModel2] = res as! [GiphyModel2]
+                self?.giphyObjects?.append(contentsOf: arrToAdd)
+                self?.collectionView.reloadData()
+                }
+            }
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if let giphyObjects = self.giphyObjects {
-//            let height: Double = Double(giphyObjects[indexPath.row].preview.height)!
-//            return CGSize.init(width: Double(self.view.frame.size.width / 2 - 10), height: height)
-//        }
-//        return CGSize.init(width: self.view.frame.size.width / 2 - 10, height: 100)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let giphyObjects = self.giphyObjects {
+            let height: Double = giphyObjects[indexPath.row].preview_gif!.height
+            return CGSize.init(width: Double(self.view.frame.size.width / 2 - 10), height: height)
+        }
+        return CGSize.init(width: self.view.frame.size.width / 2 - 10, height: 80)
+    }
 
 
 

@@ -21,6 +21,7 @@ static NSString *const kTitle = @"title";
 static NSString *const kImages = @"images";
 
 //images keys
+static NSString *const kPreview_gif = @"preview_gif";
 static NSString *const kFixed_width_small = @"fixed_width_small";
 static NSString *const kDownsized_medium = @"downsized_medium";
 

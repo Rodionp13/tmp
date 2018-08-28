@@ -9,34 +9,34 @@
 import Foundation
 
 @objcMembers class GiphyModel2: NSObject {
-    let title: String
-    let rating: String
-    let import_datetime: String
-    let trending_datetime: String
-    var kFixed_width_small: [String:Any]
-    var kDownsized_medium: [String:Any]
+    var title: String?
+    var rating: String?
+    var import_datetime: String?
+    var trending_datetime: String?
+    var preview_gif: Gif?
+    var downsized_medium: Gif?
     
-    init(gifWith title:String, _ rating: String, _ import_datetime: String, _ trending_datetime: String, kFixed_width_small: [String:Any], kDownsized_medium: [String:Any]) {
+    init(gifWith title:String, _ rating: String, _ import_datetime: String, _ trending_datetime: String, preview_gif: Gif, downsized_medium: Gif) {
         self.title = title
         self.rating = rating
         self.import_datetime = import_datetime
         self.trending_datetime = trending_datetime
-        self.kFixed_width_small = kFixed_width_small
-        self.kDownsized_medium = kDownsized_medium
+        self.preview_gif = preview_gif
+        self.downsized_medium = downsized_medium
     }
     
-    convenience override init() {
-        self.init()
+    override init() {
+        super.init()
     }
 }
 
-struct Gif {
+@objcMembers class Gif: NSObject {
     var locationUrl: URL?
     let url: String
-    let width: String
-    let height: String
+    let width: Double
+    let height: Double
     
-    init(with url: String, width: String, height: String) {
+    init(with url: String, width: Double, height: Double) {
         self.url = url
         self.width = width
         self.height = height

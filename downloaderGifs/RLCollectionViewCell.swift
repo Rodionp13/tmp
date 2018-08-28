@@ -18,16 +18,19 @@ class RLCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(imgView)
+        self.addSubview(self.imgView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addView() -> Void {
-        self.imgView.frame = CGRect.init(x: 0, y: 0, width: self.contentView.frame.size.width, height: self.contentView.frame.size.height)
-        self.contentView.addSubview(self.imgView)
-        self.imgView.translatesAutoresizingMaskIntoConstraints = false
+    func configureImgView(gif: GiphyModel2) -> Void {
+//        self.addSubview(self.imgView)
+        do {
+            let data: Data = try! Data.init(contentsOf: gif.preview_gif!.locationUrl!)
+            self.imgView.image = UIImage.gif(data: data)
+        }
     }
+    
 }

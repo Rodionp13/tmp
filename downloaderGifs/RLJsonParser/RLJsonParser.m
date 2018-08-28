@@ -16,83 +16,42 @@ typedef BOOL(^CheckBlock)(NSArray*);
 
 @implementation RLJsonParser
 
-- (void)parseFetchedJsonDataWithDict:(NSDictionary *)fetchedJsonData withComplition:(void(^)(NSArray*transformedData))complition {
+- (void)parseFetchedJsonDataWithDict:(NSDictionary *)fetchedJsonData withComplition:(void(^)(NSArray*gifObjects))complition {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
         NSArray *tempData;
         if([fetchedJsonData objectForKey:@"data"] != nil) {tempData = [fetchedJsonData objectForKey:@"data"];} else {NSLog(@"Wrong, see parseFetchedJsonDataWithDict:");}
-        NSMutableArray *transformedData = [NSMutableArray array];
+        NSMutableArray *gifObjects = [NSMutableArray array];
         
         for(NSDictionary* dataDict in tempData) {
-            NSMutableDictionary *dataForGiphyObj =  (NSMutableDictionary*)[self transformFetchedDataDictionary:dataDict.mutableCopy withBlock:^BOOL(NSArray *twoKeysToCompare) {
-                return [twoKeysToCompare.firstObject isEqualToString:twoKeysToCompare.lastObject];
-            }];
-            [transformedData addObject:dataForGiphyObj];
+            GiphyModel2 *gif = [[GiphyModel2 alloc] init];
+            
+            for(NSString *dictKey in dataDict.allKeys) {
+                
+                if([gif respondsToSelector:NSSelectorFromString(dictKey)]) {
+                    [gif setValue:dataDict[dictKey] forKey:dictKey];
+                }
+                if([dictKey isEqualToString:kImages]) {
+                    NSDictionary *fixWidthImg = dataDict[dictKey][kPreview_gif];
+                    NSDictionary *downSisizedImg = dataDict[dictKey][kDownsized_medium];
+                    [gif setPreview_gif:[[Gif alloc] initWith:fixWidthImg[kImageUrl] width:[fixWidthImg[kImageWidth] doubleValue] height:[fixWidthImg[kImageHeight] doubleValue]]];
+                    [gif setDownsized_medium:[[Gif alloc] initWith:downSisizedImg[kImageUrl] width:[downSisizedImg[kImageWidth] doubleValue] height:[downSisizedImg[kImageHeight] doubleValue]]];
+                }
+            }
+            [gifObjects addObject:gif];
         }
-        [self parseImageDictionary:transformedData];
-        NSArray *transformedDataForGiphyObjects = [[NSArray alloc] initWithArray:transformedData.copy];
-        
-        //    NSLog(@"%@", transformedDataForGiphyObjects);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            complition(transformedDataForGiphyObjects);
+            complition(gifObjects.copy);
         });
     });
     
 }
 
-- (NSMutableDictionary*)transformFetchedDataDictionary:(NSMutableDictionary*)dataDict withBlock:(CheckBlock)checkBlock {
-    NSArray *keys = @[kRating, kImport_datetime, kTrending_datetime, kImages, kTitle];
-    NSMutableDictionary *temp = [NSMutableDictionary dictionary];
-    
-    for(NSString *dictKey in dataDict.allKeys) {
-        
-        for(NSString *key in keys) {
-            
-            if([dictKey isEqualToString:kImages]) {
-                NSMutableDictionary *imagesDict = [[NSMutableDictionary alloc] initWithDictionary:dataDict[kImages]];
-                [temp setValue:imagesDict forKey:kImages];
-            }
-            
-            if(checkBlock(@[dictKey, key])) {
-                [temp setValue:[dataDict valueForKey:key] forKey:key];
-            }
-        }
-    }
-    return temp;
-}
-
-- (NSMutableArray*)transformFetchedData:(NSMutableDictionary*)dataDict withBlock:(CheckBlock)checkBlock {
-    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:dataDict.count];
-    
-    for(NSString *dictKey in dataDict.allKeys) {
-        GiphyModel2 *gif = [[GiphyModel2 alloc] init];
-        
-        if([gif respondsToSelector:NSSelectorFromString(dictKey)]) {
-            [gif setValue:dataDict[dictKey] forKey:dictKey];
-            [temp addObject:gif];
-        }
-    }
-    NSLog(@"%@", temp);
-    
-    
-    return temp;
-}
 
 
-//return image Dictionary with only 2 image sizes
-- (void)parseImageDictionary:(NSMutableArray*)transformedData {
-    for(NSMutableDictionary *mutDict in transformedData) {
-        NSMutableDictionary *imagesDict = [mutDict valueForKey:kImages];
-        
-        for(NSString *key in imagesDict.allKeys) {
-            
-            if(![key isEqualToString:kFixed_width_small] && ![key isEqualToString:kDownsized_medium]) {
-                [imagesDict removeObjectForKey:key];
-            }
-        }
-    }
-}
-
+//        for(GiphyModel2 *gif in gifObjects) {
+//            NSLog(@"===%@\n%@\n%@\n%@\n%@\n%f\n%f", gif.title,gif.rating,gif.import_datetime,gif.trending_datetime,gif.fixed_width_small.url,gif.fixed_width_small.width,gif.fixed_width_small.height);
+//        }
 
 
 
