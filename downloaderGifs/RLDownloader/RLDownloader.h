@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^InitiateParsingProcess)(NSDictionary*dataArray);
-//typedef void(^Complition)(NSDictionary*dataDict);
+static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+static NSString *const kAdditionalGifsUrl = @"http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=";
 
 @interface RLDownloader : NSObject
 
-- (void)fetchGifsDataWithComplition:(void(^)(NSDictionary*dataDict))complition;
-- (void)fetchGifWithUrl:(NSString*)strUrl andComplition:(void(^)(NSURL*location))complition;
+- (void)fetchGifsDataWithUrl:(NSString*)strUrl andComplition:(void(^)(NSDictionary*dataDict))complition;
+- (void)fetchGifWithUrl:(NSString*)strUrl andComplition:(void(^)(NSData*data, NSURL *locationUrl))complition;
 @end

@@ -13,40 +13,41 @@ protocol ModelService2Delegate: class {
 }
 
 class ModelService2 {
-    let downloader: RLDownloader = RLDownloader.init()
-    let jSonParser: RLJsonParser = RLJsonParser.init()
+    private let downloader: RLDownloader = RLDownloader.init()
+    private let jSonParser: RLJsonParser = RLJsonParser.init()
+    private var gifs = Array<GiphyModel2>()
     
     
-//    func createGifObjects(complition:@escaping (Array<GiphyModel2>) -> Void) -> Void {
-//
-//        self.startFetchingProcessWithComplition { [weak self] (fetchedArr) in
-//            var result: Array<GiphyModel2> = Array()
-////
-////            DispatchQueue.global().async {
-////                for dict in fetchedArr {
-////                    let dictData = dict as! [String:AnyObject]
-////
-////                    let gif: GiphyModel2 = (self?.prepareContext(dictData: dictData))!
-////                    result.append(gif)
-////
-////                    if(result.count == fetchedArr.count) {
-////                        DispatchQueue.main.async {
-////                            complition(result)
-////                        }
-////                    }
-////                }
-////            }
-//        }
-//    }
-    
-
-    
-    func startFetchingProcessWithComplition(complition:@escaping ([Any])->Void) -> Void {
-        self.downloader.fetchGifsData { (dataDict:[AnyHashable:Any]?) in
+    func startFetchingProcess(with url:String, and complition:@escaping ([Any])->Void) -> Void {
+        self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
             
-            self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { (gifObjects:[Any]?) in
-                complition(gifObjects! as [Any])
+            self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
+                let gifs = gifObjects as! [GiphyModel2]
+                self?.gifs.append(contentsOf: gifs)
+                complition(gifObjects! as [Any]);
             })
         }
     }
+    
+    func startFetchingGif(with url: String, and complition:@escaping (Data, URL)->Void) -> Void {
+        self.downloader.fetchGif(withUrl: url) { (data: Data?, locationUrl: URL?) in
+            guard let data = data, let locationUrl = locationUrl else {
+                return
+            }
+            complition(data,locationUrl);
+        }
+    }
+    
+    func getGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
+        return gifs[indexPath.row]
+    }
+    
+    func storeGifs(_ gifs: Array<GiphyModel2>) {
+        self.gifs.append(contentsOf: gifs)
+    }
+    
+    func gifsCount() -> Int {
+        return self.gifs.count
+    }
+    
 }

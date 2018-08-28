@@ -7,14 +7,11 @@
 //
 
 #import "RLDownloader.h"
-#import <UIKit/UIKit.h>
-
-static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
 
 @implementation RLDownloader
 
-- (void)fetchGifsDataWithComplition:(void(^)(NSDictionary*dataDict))complition {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kTrendingGifsUrl]];
+- (void)fetchGifsDataWithUrl:(NSString*)strUrl andComplition:(void(^)(NSDictionary*dataDict))complition {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:strUrl]];
     [request setHTTPMethod:@"GET"];
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     
@@ -31,7 +28,7 @@ static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trendi
 }
 
 
-- (void)fetchGifWithUrl:(NSString*)strUrl andComplition:(void(^)(NSURL*location))complition {
+- (void)fetchGifWithUrl:(NSString*)strUrl andComplition:(void(^)(NSData*data, NSURL *locationUrl))complition {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     
     NSURLSessionDownloadTask *downloadTask = [defaultSession downloadTaskWithURL:[NSURL URLWithString:strUrl] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -42,9 +39,10 @@ static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trendi
         NSURL *originalUrl = [NSURL URLWithString:[location lastPathComponent]];
         NSURL *desctinationUrl = [cacheDirectory URLByAppendingPathComponent:[originalUrl lastPathComponent]];
         [defaultManager copyItemAtURL:location toURL:desctinationUrl error:nil];
+        NSData *data = [NSData dataWithContentsOfURL:desctinationUrl];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            complition(desctinationUrl);
+            complition(data, desctinationUrl);
         });
         
     }];

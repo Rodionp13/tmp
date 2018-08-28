@@ -25,12 +25,11 @@ class RLCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureImgView(gif: GiphyModel2) -> Void {
-//        self.addSubview(self.imgView)
-        do {
-            let data: Data = try! Data.init(contentsOf: gif.preview_gif!.locationUrl!)
-            self.imgView.image = UIImage.gif(data: data)
-        }
+    func configureImgView(with location: URL) -> Void {
+            do {
+                let data: Data = try! Data.init(contentsOf: location)
+                self.imgView.image = UIImage.gif(data: data)
+            }
     }
     
 }

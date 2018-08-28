@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D28A5C9212FFADC0031AA6A /* RLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5C8212FFADC0031AA6A /* RLDownloader.m */; };
 		3D28A5CD212FFC2F0031AA6A /* RLJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5CC212FFC2F0031AA6A /* RLJsonParser.m */; };
-		3D28A5D321300C760031AA6A /* ModelService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5D221300C760031AA6A /* ModelService.m */; };
-		3D28A5D621301C020031AA6A /* PresenterTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5D521301C020031AA6A /* PresenterTemp.m */; };
 		3D28A5DE213043EE0031AA6A /* RLMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5DD213043EE0031AA6A /* RLMainViewController.swift */; };
 		3D28A5E0213045F20031AA6A /* GiphyModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5DF213045F20031AA6A /* GiphyModel2.swift */; };
 		3D28A5E2213051C50031AA6A /* ModelService2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5E1213051C50031AA6A /* ModelService2.swift */; };
@@ -18,12 +16,12 @@
 		3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3504622133FF9700B11184 /* GIF+UIImageView.swift */; };
 		3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D350482213466BE00B11184 /* RLCollectionViewCell.swift */; };
 		3DF840CB212EC07B00E23A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840CA212EC07B00E23A8F /* AppDelegate.m */; };
-		3DF840CE212EC07B00E23A8F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840CD212EC07B00E23A8F /* ViewController.m */; };
 		3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840CF212EC07B00E23A8F /* Main.storyboard */; };
 		3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D2212EC07C00E23A8F /* Assets.xcassets */; };
 		3DF840D6212EC07C00E23A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */; };
 		3DF840D9212EC07C00E23A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840D8212EC07C00E23A8F /* main.m */; };
 		3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840E0212EEBE600E23A8F /* GiphyModel.m */; };
+		CE1AEBCE21358CEA0042E421 /* RLMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1AEBCD21358CEA0042E421 /* RLMainView.swift */; };
 		CE351D5921332EB50016B2D5 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = CE351D5821332EB50016B2D5 /* Gif.m */; };
 /* End PBXBuildFile section */
 
@@ -33,10 +31,6 @@
 		3D28A5CA212FFB190031AA6A /* ConstantsForParsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantsForParsing.h; sourceTree = "<group>"; };
 		3D28A5CB212FFC2F0031AA6A /* RLJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLJsonParser.h; sourceTree = "<group>"; };
 		3D28A5CC212FFC2F0031AA6A /* RLJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLJsonParser.m; sourceTree = "<group>"; };
-		3D28A5D121300C760031AA6A /* ModelService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelService.h; sourceTree = "<group>"; };
-		3D28A5D221300C760031AA6A /* ModelService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelService.m; sourceTree = "<group>"; };
-		3D28A5D421301C020031AA6A /* PresenterTemp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresenterTemp.h; sourceTree = "<group>"; };
-		3D28A5D521301C020031AA6A /* PresenterTemp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresenterTemp.m; sourceTree = "<group>"; };
 		3D28A5D8213032A30031AA6A /* downloaderGifs-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "downloaderGifs-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D28A5DD213043EE0031AA6A /* RLMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMainViewController.swift; sourceTree = "<group>"; };
 		3D28A5DF213045F20031AA6A /* GiphyModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyModel2.swift; sourceTree = "<group>"; };
@@ -47,8 +41,6 @@
 		3DF840C6212EC07B00E23A8F /* downloaderGifs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = downloaderGifs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF840C9212EC07B00E23A8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3DF840CA212EC07B00E23A8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3DF840CC212EC07B00E23A8F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3DF840CD212EC07B00E23A8F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3DF840D0212EC07B00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DF840D2212EC07C00E23A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF840D5212EC07C00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +48,7 @@
 		3DF840D8212EC07C00E23A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DF840DF212EEBE600E23A8F /* GiphyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiphyModel.h; sourceTree = "<group>"; };
 		3DF840E0212EEBE600E23A8F /* GiphyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiphyModel.m; sourceTree = "<group>"; };
+		CE1AEBCD21358CEA0042E421 /* RLMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMainView.swift; sourceTree = "<group>"; };
 		CE351D5721332EB50016B2D5 /* Gif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
 		CE351D5821332EB50016B2D5 /* Gif.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,9 +86,6 @@
 		3D28A5D0212FFCCC0031AA6A /* ModelGiphy */ = {
 			isa = PBXGroup;
 			children = (
-				3D28A5D121300C760031AA6A /* ModelService.h */,
-				3D28A5D221300C760031AA6A /* ModelService.m */,
-				CE351D5621332E9E0016B2D5 /* Model */,
 				3D28A5E1213051C50031AA6A /* ModelService2.swift */,
 				3D28A5DF213045F20031AA6A /* GiphyModel2.swift */,
 				3D3504622133FF9700B11184 /* GIF+UIImageView.swift */,
@@ -106,8 +96,7 @@
 		3D28A5D7213031E50031AA6A /* RLPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				3D28A5D421301C020031AA6A /* PresenterTemp.h */,
-				3D28A5D521301C020031AA6A /* PresenterTemp.m */,
+				3D28A5E32130693D0031AA6A /* Presenter2.swift */,
 			);
 			path = RLPresenter;
 			sourceTree = "<group>";
@@ -131,18 +120,17 @@
 		3DF840C8212EC07B00E23A8F /* downloaderGifs */ = {
 			isa = PBXGroup;
 			children = (
+				CE1AEBCD21358CEA0042E421 /* RLMainView.swift */,
 				3DF840C9212EC07B00E23A8F /* AppDelegate.h */,
 				3DF840CA212EC07B00E23A8F /* AppDelegate.m */,
-				3DF840CC212EC07B00E23A8F /* ViewController.h */,
-				3DF840CD212EC07B00E23A8F /* ViewController.m */,
 				3D28A5DD213043EE0031AA6A /* RLMainViewController.swift */,
 				3D350482213466BE00B11184 /* RLCollectionViewCell.swift */,
-				3D28A5E32130693D0031AA6A /* Presenter2.swift */,
 				3D28A5D7213031E50031AA6A /* RLPresenter */,
 				3D28A5D0212FFCCC0031AA6A /* ModelGiphy */,
 				3D28A5CF212FFCB30031AA6A /* RLDownloader */,
 				3D28A5CE212FFCA50031AA6A /* RLJsonParser */,
 				3D28A5D8213032A30031AA6A /* downloaderGifs-Bridging-Header.h */,
+				CE351D5621332E9E0016B2D5 /* Model */,
 				3DF840CF212EC07B00E23A8F /* Main.storyboard */,
 				3DF840D2212EC07C00E23A8F /* Assets.xcassets */,
 				3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */,
@@ -234,13 +222,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1AEBCE21358CEA0042E421 /* RLMainView.swift in Sources */,
 				3D28A5DE213043EE0031AA6A /* RLMainViewController.swift in Sources */,
-				3D28A5D621301C020031AA6A /* PresenterTemp.m in Sources */,
 				3D28A5CD212FFC2F0031AA6A /* RLJsonParser.m in Sources */,
 				3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */,
-				3D28A5D321300C760031AA6A /* ModelService.m in Sources */,
 				CE351D5921332EB50016B2D5 /* Gif.m in Sources */,
-				3DF840CE212EC07B00E23A8F /* ViewController.m in Sources */,
 				3DF840D9212EC07C00E23A8F /* main.m in Sources */,
 				3DF840CB212EC07B00E23A8F /* AppDelegate.m in Sources */,
 				3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */,
