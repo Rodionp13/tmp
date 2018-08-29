@@ -35,11 +35,13 @@ import Foundation
     let url: String
     let width: Double
     let height: Double
+    let size: Int
     
-    init(with url: String, width: Double, height: Double) {
+    init(with url: String, width: Double, height: Double, size: Int) {
         self.url = url
         self.width = width
         self.height = height
+        self.size = size
     }
 }
 

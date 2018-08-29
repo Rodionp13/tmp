@@ -15,6 +15,7 @@
 		3D28A5E42130693D0031AA6A /* Presenter2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28A5E32130693D0031AA6A /* Presenter2.swift */; };
 		3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3504622133FF9700B11184 /* GIF+UIImageView.swift */; };
 		3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D350482213466BE00B11184 /* RLCollectionViewCell.swift */; };
+		3D3600902136C03300ABEDCC /* RLDetailedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D36008F2136C03300ABEDCC /* RLDetailedViewController.xib */; };
 		3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840CF212EC07B00E23A8F /* Main.storyboard */; };
 		3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D2212EC07C00E23A8F /* Assets.xcassets */; };
 		3DF840D6212EC07C00E23A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 		3D28A5E32130693D0031AA6A /* Presenter2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter2.swift; sourceTree = "<group>"; };
 		3D3504622133FF9700B11184 /* GIF+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF+UIImageView.swift"; sourceTree = "<group>"; };
 		3D350482213466BE00B11184 /* RLCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D36008F2136C03300ABEDCC /* RLDetailedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RLDetailedViewController.xib; sourceTree = "<group>"; };
 		3DF840C6212EC07B00E23A8F /* downloaderGifs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = downloaderGifs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF840D0212EC07B00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DF840D2212EC07C00E23A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */,
+				3D36008F2136C03300ABEDCC /* RLDetailedViewController.xib */,
 				3D28A5E32130693D0031AA6A /* Presenter2.swift */,
 			);
 			path = RLDetailedViewController;
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF840D6212EC07C00E23A8F /* LaunchScreen.storyboard in Resources */,
+				3D3600902136C03300ABEDCC /* RLDetailedViewController.xib in Resources */,
 				3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */,
 				3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */,
 			);
@@ -381,7 +385,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bnr.downloaderGifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/downloaderGifs-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/radzivon_uhrynovich/Desktop/tmp/downloaderGifs/downloaderGifs-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -401,7 +405,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bnr.downloaderGifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/downloaderGifs-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/radzivon_uhrynovich/Desktop/tmp/downloaderGifs/downloaderGifs-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

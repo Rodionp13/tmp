@@ -16,20 +16,19 @@ class RLCollectionViewCell: UICollectionViewCell {
         return imgV
     }()
     
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        return indicator
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.imgView)
+        self.addSubview(self.activityIndicator)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureImgView(with location: URL) -> Void {
-            do {
-                let data: Data = try! Data.init(contentsOf: location)
-                self.imgView.image = UIImage.gif(data: data)
-            }
     }
     
 }

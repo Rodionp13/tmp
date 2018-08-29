@@ -33,8 +33,8 @@ typedef BOOL(^CheckBlock)(NSArray*);
                 if([dictKey isEqualToString:kImages]) {
                     NSDictionary *fixWidthImg = dataDict[dictKey][kPreview_gif];
                     NSDictionary *downSisizedImg = dataDict[dictKey][kDownsized_medium];
-                    [gif setPreview_gif:[[Gif alloc] initWith:fixWidthImg[kImageUrl] width:[fixWidthImg[kImageWidth] doubleValue] height:[fixWidthImg[kImageHeight] doubleValue]]];
-                    [gif setDownsized_medium:[[Gif alloc] initWith:downSisizedImg[kImageUrl] width:[downSisizedImg[kImageWidth] doubleValue] height:[downSisizedImg[kImageHeight] doubleValue]]];
+                    [gif setPreview_gif:[[Gif alloc] initWith:fixWidthImg[kImageUrl] width:[fixWidthImg[kImageWidth] doubleValue] height:[fixWidthImg[kImageHeight] doubleValue] size:0]];
+                    [gif setDownsized_medium:[[Gif alloc] initWith:downSisizedImg[kImageUrl] width:[downSisizedImg[kImageWidth] doubleValue] height:[downSisizedImg[kImageHeight] doubleValue] size:([downSisizedImg[kImageSize] doubleValue]/1000000)]];
                 }
             }
             [gifObjects addObject:gif];

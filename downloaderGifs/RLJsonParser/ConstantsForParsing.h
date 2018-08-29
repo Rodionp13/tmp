@@ -29,3 +29,5 @@ static NSString *const kDownsized_medium = @"downsized_medium";
 static NSString *const kImageUrl = @"url";
 static NSString *const kImageWidth = @"width";
 static NSString *const kImageHeight = @"height";
+static NSString *const kImageSize = @"size";
+
