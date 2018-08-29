@@ -32,6 +32,19 @@ class RLDetailedViewController: UIViewController {
     }
     
     func configureImageView() -> Void {
+//        let strUrl: String = (self.gif.downsized_medium?.url)!
+//        guard let url = URL.init(string: strUrl) else {
+//            return
+//        }
+//            let data: Data = try! Data.init(contentsOf: url)
+//            let imgView = UIImageView.init(frame: .zero)
+//            imgView.image = UIImage.gif(data: data)
+//            self.view.addSubview(imgView)
+//            self.gifImageView = imgView
+//            self.setConstraintsToImageView()
+        
+        
+        
         let url: String = (self.gif.downsized_medium?.url)!
         self.modelService.startFetchingGif(with: url) { [weak self] (data, url) in
             let imgView = UIImageView.init(frame: .zero)
