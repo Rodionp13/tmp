@@ -39,6 +39,7 @@ class ModelService2 {
     }
     
     func getGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
+        print(gifs.count)
         return gifs[indexPath.row]
     }
     

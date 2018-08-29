@@ -39,7 +39,8 @@ class RLMainViewController: UIViewController {
     func setUpSearchBar() {
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 7))
         searchBar.delegate = self
-        self.view.addSubview(searchBar)
+        self.navigationItem.titleView = searchBar
+//        self.view.addSubview(searchBar)
     }
     
     func setupCollectionView() {
@@ -110,9 +111,9 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailedVC = RLDetailedViewController.init(nibName: nil, bundle: nil)
-        if let gif = self.modelService.getGif(withIndexPath: indexPath) {
-        detailedVC.gif? = gif
-        }
+        detailedVC.indexPath = indexPath
+        detailedVC.gif = self.modelService.getGif(withIndexPath: indexPath)
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
