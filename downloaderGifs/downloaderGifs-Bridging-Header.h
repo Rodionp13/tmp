@@ -5,3 +5,4 @@
 #import "RLDownloader.h"
 #import "RLJsonParser.h"
 #import "ConstantsForParsing.h"
+#import "Connectivity.h"

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
-static NSString *const kAdditionalGifsUrl = @"http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=";
+static NSString *const kAdditionalGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=";
 
 @interface RLDownloader : NSObject
 
