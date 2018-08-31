@@ -59,15 +59,21 @@ class RLMainViewController: UIViewController {
         
         cell.activityIndicator.startAnimating();
         cell.activityIndicator.isHidden = false
-        self.presenter.fetchSmallGif(with: indexPath) { [weak self] (data:Data?) in
+        let connection = Connectivity.isNetworkAvailable()
+        
+        self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.trending, topic: nil) { [weak self] (data:Data?) in
+            if(connection) {
             cell.activityIndicator.stopAnimating()
             cell.activityIndicator.isHidden = true
+            }
             guard let data = data else {
                 guard let originalName = self?.presenter.modelService.getGif(withIndexPath: indexPath)?.preview_gif?.originalName else { return }
                 let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
                 let data = try? Data.init(contentsOf: locationUrl!)
                 cell.imgView.image = UIImage.gif(data: data!)
                 cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+                cell.activityIndicator.stopAnimating()
+                cell.activityIndicator.isHidden = true
                 return
             }
             cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
@@ -95,9 +101,10 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailedVC = RLDetailedViewController.init(nibName: "RLDetailedViewController", bundle: nil)
         detailedVC.indexPath = indexPath
-        detailedVC.gif = self.presenter.modelService.getGif(withIndexPath: indexPath)
+//        detailedVC.gif = self.presenter.modelService.getGif(withIndexPath: indexPath)
         detailedVC.presenter = self.presenter
-        navigationController?.pushViewController(detailedVC, animated: true)
+        print(self.presenter.modelService.getGif(withIndexPath: indexPath))
+        if(self.presenter.modelService.getGif(withIndexPath: indexPath) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -121,7 +128,9 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension RLMainViewController: PresenterDelegate {
     
     func updateCollectionAfterLoading(indisesToUpdate indises: Array<IndexPath>) {
-        self.collectionView.insertItems(at: indises)
+//        self.collectionView.insertItems(at: indises)
+//        self.collectionView.reloadItems(at: indises)
+        self.collectionView.reloadData()
     }
     
     func loadingDidStart(_ indexPath: IndexPath) {}

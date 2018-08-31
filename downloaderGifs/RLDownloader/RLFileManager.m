@@ -34,7 +34,7 @@
     NSURL *documentDirectory = [urls objectAtIndex:0];
     NSURL *originalUrl = [NSURL URLWithString:[originalName lastPathComponent]];
     NSURL *desctinationUrl = [documentDirectory URLByAppendingPathComponent:[originalUrl lastPathComponent]];
-    NSLog(@"destination creater; createDestinationUrl: RESPONES\n%@", desctinationUrl);
+//    NSLog(@"destination creater; createDestinationUrl: RESPONES\n%@", desctinationUrl);
     
     return desctinationUrl;
 }

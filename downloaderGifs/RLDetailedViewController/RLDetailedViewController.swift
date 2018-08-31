@@ -37,11 +37,12 @@ class RLDetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.delegate2 = self
+        self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!)
         
         self.downloadIndicator.isHidden = true
         self.configureButtons(downloadBttn: self.downloadBttn, shareBttn: self.shareBttn)
         
-        guard let downsized_medium = self.gif.downsized_medium  else {return}
+        guard let downsized_medium = self.gif.downsized_medium  else { return }
         self.configureImageView(withUrl: downsized_medium.url, and: self.mainIndicator)
         self.configureLabels(withGifData: self.gif, title: self.gifTitle, date: self.gifDate, size: self.gifSize)
         
@@ -63,20 +64,27 @@ class RLDetailedViewController: UIViewController {
     private func configureImageView(withUrl strUrl:String, and mainIndicator: UIActivityIndicatorView) -> Void {
         mainIndicator.isHidden = false
         mainIndicator.startAnimating()
-        guard let indexPath = self.indexPath else { return }
+        guard let originalName = self.gif.downsized_medium?.originalName else {
+            //if gif hasn't originalName -> then Download gif
+            self.presenter.fetchDownsizedGif(with: self.indexPath!) { [weak self] (data) in
+                guard let data = data else { return }
+                self?.gifImageView.image = UIImage.gif(data: data)
+            }
+            return
+        }
+        //if gif has original Name
+        let data = try! Data.init(contentsOf: RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory))
+        self.gifImageView.image = UIImage.gif(data: data)
         
-        self.presenter.fetchDownsizedGif(with: indexPath) { [weak self] (data) in
-            self?.gifImageView.image = UIImage.gif(data: data)
+        //check connectivity
+        Connectivity.networkCondition({ [weak self] in
+            self?.downloadBttn.isHidden = false
             mainIndicator.stopAnimating()
             mainIndicator.isHidden = true
-            self?.shareBttn.isHidden = false
-            
-            let connection = Connectivity.isNetworkAvailable()
-            if(!connection) {
-                self?.downloadBttn.isHidden = true
-            } else {
-                self?.downloadBttn.isHidden = false
-            }
+        }) { [weak self] in
+            self?.downloadBttn.isHidden = true
+            self?.mainIndicator.stopAnimating()
+            self?.mainIndicator.isHidden = true
         }
     }
     
@@ -101,7 +109,9 @@ class RLDetailedViewController: UIViewController {
     }
     
     private func prepateGifDataToPass(with gif:GiphyModel2) -> Dictionary<NSString,[NSString:Any]>? {
-        
+//        print("GIF\n\(gif.downsized_medium?.originalName)")
+//        print("GIF\n\(gif.description)")
+//        print("GIF FROM METH\n\((self.presenter.modelService.getGif(withIndexPath: self.indexPath!))?.preview_gif?.originalName!)")
         guard let prev = gif.preview_gif, let down = gif.downsized_medium else { return Dictionary<NSString,[NSString:Any]>() }
         let previewGif:[NSString:Any] = ["originalName":prev.originalName!,"width":prev.width,"height":prev.height,"url":prev.url,"size":prev.size]
         let downsizedGif:[NSString:Any] = ["originalName":down.originalName!,"width":down.width,"height":down.height,"url":down.url,"size":down.size]
@@ -146,6 +156,8 @@ extension RLDetailedViewController: DetailedPresenterDelegate {
             }
         }
     }
+    
+    func connectionDownAlert() { print("connection is down!") }
 
 }
 

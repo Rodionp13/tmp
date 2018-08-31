@@ -10,7 +10,6 @@
 
 static NSString *const kTrendingGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
 static NSString *const kAdditionalGifsUrl = @"https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&offset=";
-//static NSString *const kK = @"https://api.giphy.com/v1/gifs/search?q=\(query)&api_key=dc6zaTOxFJmzC";
 
 @interface RLDownloader : NSObject
 

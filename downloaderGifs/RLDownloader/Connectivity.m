@@ -19,4 +19,14 @@
     if(status == kCFNetDiagnosticConnectionUp) {return YES;} else {return NO;}
 }
 
++ (void)networkConditionWith:(NetworkCondition)isConnected or:(NetworkCondition)isDisconnected {
+    if([Connectivity isNetworkAvailable]) {
+        isConnected();
+    } else {
+        isDisconnected();
+    }
+}
+
+
+
 @end

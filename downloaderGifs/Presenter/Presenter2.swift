@@ -16,9 +16,10 @@ import Foundation
     @objc optional func connectionDownAlert() -> Void;
 }
 
-protocol DetailedPresenterDelegate: class {
+@objc protocol DetailedPresenterDelegate: class {
     func willStartAddingNewRecordToDb() -> Void;
     func didEndAddingNewRecordToDb() -> Void;
+    @objc optional func connectionDownAlert() -> Void;
 }
 
 
@@ -48,8 +49,8 @@ class Presenter2 {
     }
     
     
-    public func fetchSmallGif(with indexPath: IndexPath, and complition:@escaping(Data?)->Void) -> Void {
-        self.modelService.fetchSmallGif(with: indexPath, complitionBlock: { (data: Data?) in
+    public func fetchSmallGif(with indexPath: IndexPath, queryTypre: QueryType?, topic: String?, and complition:@escaping(Data?)->Void) -> Void {
+        self.modelService.fetchSmallGif(with: indexPath, queryTypre: queryTypre, topic: topic, complitionBlock: { (data: Data?) in
                     complition(data);
                 }) { [weak self] (indises)  in
                     self?.delegate?.updateCollectionAfterLoading!(indisesToUpdate: indises);
@@ -57,14 +58,18 @@ class Presenter2 {
         }
     
     
-    public func fetchDownsizedGif(with indexPath: IndexPath, complitionBlock:@escaping (Data)->Void)  -> Void {
+    public func fetchDownsizedGif(with indexPath: IndexPath, complitionBlock:@escaping (Data?)->Void)  -> Void {
         let connection = Connectivity.isNetworkAvailable()
         if(connection) {
             self.modelService.fetchDownsizedGif(with: indexPath) {(data) in
                 complitionBlock(data);
             }
         } else {
-            self.queryToDb(with: indexPath)
+//            self.queryToDb(with: indexPath) { [weak self] (data) in
+            complitionBlock(nil)
+                self.delegate2?.connectionDownAlert!()
+//                complitionBlock(data);
+//            }
         }
 //        else {
 //            guard let gif = self.modelService.getGif(withIndexPath: indexPath), let originalName = gif.downsized_medium?.originalName else { return }
@@ -83,14 +88,18 @@ class Presenter2 {
         }
     }
     
-    private func queryToDb(with indexPath: IndexPath, with complition) -> Void {
+    private func queryToDb(with indexPath: IndexPath, and complition:@escaping((Data)->Void))   -> Void {
         guard let gif = self.modelService.getGif(withIndexPath: indexPath), let title = gif.title, let rating = gif.rating else { return }
         
         let predicate: NSPredicate = NSPredicate(format: "title = %@ AND rating = %@", argumentArray: [title, rating])
         self.cdManager.loadDataFromDB(with: predicate, andDescriptor: nil) { (dbResult:[Any]?) in
             guard let dbResult = dbResult else { return }
             if(dbResult.count != 0) {
-                
+            let gif = dbResult.first as! GiphyModel2
+                let originalName = gif.downsized_medium?.originalName!
+                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
+                let data = try? Data.init(contentsOf: locationUrl!)
+                complition(data!)
             }
         }
     }

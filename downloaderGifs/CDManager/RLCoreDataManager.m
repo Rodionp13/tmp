@@ -43,11 +43,12 @@
             NSLog(@"1.Failed to load data from CD with predicate\n%@\n%@", err, [err localizedDescription]);
         } else {
             NSLog(@"1.Success load data from CD with predicate, element count=%lu", [result count]);
-            for(RLGifModelMO *mo in result) {
-                RLPreviewGifMO *pr = mo.previewGif;
-                NSLog(@"PREV %@\n%f\n%f\n%lld\n%@\n", pr.url, pr.width,pr.height,pr.size,pr.originalName);
-            }
+//            for(RLGifModelMO *mo in result) {
+//                RLPreviewGifMO *pr = mo.previewGif;
+//                NSLog(@"PREV %@\n%f\n%f\n%lld\n%@\n", pr.url, pr.width,pr.height,pr.size,pr.originalName);
+//            }
         }
+    
     [self transformRecordsInToGifObjects:result complition:^(NSArray<GiphyModel2 *> *gifObjects) {
         complition(gifObjects);
     }];
@@ -56,8 +57,10 @@
 
 - (void)transformRecordsInToGifObjects:(NSArray<NSManagedObject*>*)records complition:(void(^)(NSArray<GiphyModel2*>*))complition {
     NSMutableArray<GiphyModel2*> *gifObjects = [NSMutableArray arrayWithCapacity:[records count]];
-    for(NSManagedObject* obj in records) {
-        [gifObjects addObject:[self getGif:(RLGifModelMO*)obj]];
+    if(records.count != 0) {
+        for(NSManagedObject* obj in records) {
+            [gifObjects addObject:[self getGif:(RLGifModelMO*)obj]];
+        }
     }
     complition(gifObjects.copy);
 }

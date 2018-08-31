@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^NetworkCondition)(void);
+
 @interface Connectivity : NSObject
 
 + (BOOL)isNetworkAvailable;
++ (void)networkConditionWith:(NetworkCondition)isConnected or:(NetworkCondition)isDisconnected;
 @end
