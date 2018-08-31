@@ -31,26 +31,48 @@ class RLMainViewController: UIViewController {
         super.viewDidLoad()
         self.setupCollectionView()
         self.setUpSearchBar()
-        
         self.presenter.delegate = self
-        self.presenter.startFetchingProcess(with: kTrendingGifsUrl) { [weak self] in
+        
+        self.presenter.startFetchingProcess(with: kTrendingGifsUrl) { [weak self] (nil) in
             self?.collectionView.reloadData()
         }
     }
     
-    func setUpSearchBar() {
+    private func setUpSearchBar() {
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 7))
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: self.layout)
         collectionView.backgroundColor = .black
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(RLCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         self.view.addSubview(collectionView)
+    }
+    
+    fileprivate func prepareCellForPresentation(with cell: RLCollectionViewCell, and indexPath: IndexPath, on collectionView: UICollectionView) -> Void {
+        
+        cell.imgView.image = nil
+        
+        cell.activityIndicator.startAnimating();
+        cell.activityIndicator.isHidden = false
+        self.presenter.fetchSmallGif(with: indexPath) { [weak self] (data:Data?) in
+            cell.activityIndicator.stopAnimating()
+            cell.activityIndicator.isHidden = true
+            guard let data = data else {
+                guard let originalName = self?.presenter.modelService.getGif(withIndexPath: indexPath)?.preview_gif?.originalName else { return }
+                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
+                let data = try? Data.init(contentsOf: locationUrl!)
+                cell.imgView.image = UIImage.gif(data: data!)
+                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+                return
+            }
+            cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+            cell.imgView.image = UIImage.gif(data: data)
+        }
     }
     
 }
@@ -66,14 +88,7 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: RLCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! RLCollectionViewCell
-        cell.imgView.image = nil
-        cell.activityIndicator.startAnimating()
-        
-        self.presenter.fetchSmallGif(with: indexPath) { (data) in
-            cell.activityIndicator.stopAnimating()
-            cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-            cell.imgView.image = UIImage.gif(data: data)
-        }
+        self.prepareCellForPresentation(with: cell, and: indexPath, on: collectionView)
         return cell
     }
     
@@ -81,6 +96,7 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailedVC = RLDetailedViewController.init(nibName: "RLDetailedViewController", bundle: nil)
         detailedVC.indexPath = indexPath
         detailedVC.gif = self.presenter.modelService.getGif(withIndexPath: indexPath)
+        detailedVC.presenter = self.presenter
         navigationController?.pushViewController(detailedVC, animated: true)
     }
     
@@ -107,6 +123,9 @@ extension RLMainViewController: PresenterDelegate {
     func updateCollectionAfterLoading(indisesToUpdate indises: Array<IndexPath>) {
         self.collectionView.insertItems(at: indises)
     }
+    
+    func loadingDidStart(_ indexPath: IndexPath) {}
+    func loadingDidEnd(_ indexPath: IndexPath) {}
     
     func connectionDownAlert() {print("Connection is Down")}
 }

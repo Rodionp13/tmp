@@ -7,23 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "downloaderGifs-Swift.h"
 
-//entities
-//static NSString *const kArticleEnt = @"ArticleEnt";
-
-//typedef NS_ENUM(NSInteger, EntityType) {
-//    ChannelEnt = 0,
-//    ArticleEnt,
-//    ImageContentURLAndNameEnt,
-//    VideoContentURLAndNameEnt
-//};
-
+//typedef void(^Complition)(NSArray*);
 
 @interface RLCoreDataManager : NSObject
+//@property(nonatomic, copy) Complition complition;
 
-- (void)addNewRecordsToDB:(NSDictionary *)channelGroups;
-- (NSDictionary *)parseMOinToObjects:(NSArray*)managedObjects;
+- (void)loadDataFromDBWithPredicate:(nullable NSPredicate*)predicate andDescriptor:(nullable NSArray<NSSortDescriptor*>*)sortDescriptors andComplition:(void(^)(NSArray*))complition;
+- (void)addNewRecordsToDB:(NSDictionary *)gifObjrctDict complition:(void(^)(void))complition;
+//- (void)addNewRecordsToDB:(NSDictionary *)channelGroups;
+//- (NSDictionary *)parseMOinToObjects:(NSArray*)managedObjects;
 //- (NSArray *)loadDataFromDBWithPredicate:(nullable NSPredicate*)predicate andDescriptor:(nullable NSArray<NSSortDescriptor*>*)sortDescriptors forEntity:(EntityType)entityName;
 //- (void)convertArticlesMOinToArticlesObjects:(NSArray<ArticleMO*>*)articlesMO withComplitionBlock:(void(^)(NSMutableArray<Article*>*articlesArr))complition;
 //- (void)addNewArticlesToChannel:(ChannelMO*)targetChannelMO articlesToAdd:(NSArray<Article*>*)articlse channelSetIsEmpty:(BOOL)isEmpty;

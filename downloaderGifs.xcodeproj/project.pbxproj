@@ -24,15 +24,16 @@
 		CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13054F213765A800FAAB86 /* RLCoreDataManager.m */; };
 		CE1305592137698300FAAB86 /* RLMyStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1305582137698300FAAB86 /* RLMyStack.m */; };
 		CE13056F2137711F00FAAB86 /* downloaderGifs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE13056D2137711F00FAAB86 /* downloaderGifs.xcdatamodeld */; };
-		CE130588213773D200FAAB86 /* RLGifModelMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13057E213773D200FAAB86 /* RLGifModelMO+CoreDataClass.m */; };
-		CE130589213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13057F213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.m */; };
-		CE13058A213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE130582213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.m */; };
-		CE13058B213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE130583213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.m */; };
-		CE13058C213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CE130586213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.m */; };
-		CE13058D213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE130587213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.m */; };
 		CE351D5921332EB50016B2D5 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = CE351D5821332EB50016B2D5 /* Gif.m */; };
 		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
 		CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB75062136131B00528CFF /* RLAppDelegate.swift */; };
+		CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */; };
+		CEE4B3372138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32D2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m */; };
+		CEE4B3382138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3302138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m */; };
+		CEE4B3392138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3312138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m */; };
+		CEE4B33A2138A595008B23BF /* RLGifModelMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3342138A595008B23BF /* RLGifModelMO+CoreDataClass.m */; };
+		CEE4B33B2138A595008B23BF /* RLGifModelMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3352138A595008B23BF /* RLGifModelMO+CoreDataProperties.m */; };
+		CEF594B32138351D00C0111B /* RLFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF594B22138351D00C0111B /* RLFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,22 +64,24 @@
 		CE1305572137698300FAAB86 /* RLMyStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLMyStack.h; sourceTree = "<group>"; };
 		CE1305582137698300FAAB86 /* RLMyStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLMyStack.m; sourceTree = "<group>"; };
 		CE13056E2137711F00FAAB86 /* downloaderGifs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = downloaderGifs.xcdatamodel; sourceTree = "<group>"; };
-		CE13057C213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLGifModelMO+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CE13057D213773D200FAAB86 /* RLGifModelMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLGifModelMO+CoreDataClass.h"; sourceTree = "<group>"; };
-		CE13057E213773D200FAAB86 /* RLGifModelMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLGifModelMO+CoreDataClass.m"; sourceTree = "<group>"; };
-		CE13057F213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLGifModelMO+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CE130580213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CE130581213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataClass.h"; sourceTree = "<group>"; };
-		CE130582213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLDownsizedGifMO+CoreDataClass.m"; sourceTree = "<group>"; };
-		CE130583213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLDownsizedGifMO+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CE130584213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLPreviewGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CE130585213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLPreviewGifMO+CoreDataClass.h"; sourceTree = "<group>"; };
-		CE130586213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLPreviewGifMO+CoreDataClass.m"; sourceTree = "<group>"; };
-		CE130587213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLPreviewGifMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CE351D5721332EB50016B2D5 /* Gif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
 		CE351D5821332EB50016B2D5 /* Gif.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
 		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
 		CEDB75062136131B00528CFF /* RLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLAppDelegate.swift; sourceTree = "<group>"; };
+		CEE4B32A2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CEE4B32B2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLDownsizedGifMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		CEE4B32D2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLDownsizedGifMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CEE4B32E2138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLPreviewGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CEE4B32F2138A595008B23BF /* RLPreviewGifMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLPreviewGifMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		CEE4B3302138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLPreviewGifMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		CEE4B3312138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLPreviewGifMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CEE4B3322138A595008B23BF /* RLGifModelMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLGifModelMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CEE4B3332138A595008B23BF /* RLGifModelMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLGifModelMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		CEE4B3342138A595008B23BF /* RLGifModelMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLGifModelMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		CEE4B3352138A595008B23BF /* RLGifModelMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLGifModelMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CEF594B12138351D00C0111B /* RLFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLFileManager.h; sourceTree = "<group>"; };
+		CEF594B22138351D00C0111B /* RLFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				3D28A5C8212FFADC0031AA6A /* RLDownloader.m */,
 				CE13054A2137528F00FAAB86 /* Connectivity.h */,
 				CE13054B2137528F00FAAB86 /* Connectivity.m */,
+				CEF594B12138351D00C0111B /* RLFileManager.h */,
+				CEF594B22138351D00C0111B /* RLFileManager.m */,
 			);
 			path = RLDownloader;
 			sourceTree = "<group>";
@@ -192,18 +197,18 @@
 		CE13058E213773E100FAAB86 /* CDManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				CE13057C213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.h */,
-				CE13057D213773D200FAAB86 /* RLGifModelMO+CoreDataClass.h */,
-				CE13057E213773D200FAAB86 /* RLGifModelMO+CoreDataClass.m */,
-				CE13057F213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.m */,
-				CE130580213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.h */,
-				CE130581213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.h */,
-				CE130582213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.m */,
-				CE130583213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.m */,
-				CE130584213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.h */,
-				CE130585213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.h */,
-				CE130586213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.m */,
-				CE130587213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.m */,
+				CEE4B32A2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.h */,
+				CEE4B32B2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.h */,
+				CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */,
+				CEE4B32D2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m */,
+				CEE4B32E2138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.h */,
+				CEE4B32F2138A595008B23BF /* RLPreviewGifMO+CoreDataClass.h */,
+				CEE4B3302138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m */,
+				CEE4B3312138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m */,
+				CEE4B3322138A595008B23BF /* RLGifModelMO+CoreDataProperties.h */,
+				CEE4B3332138A595008B23BF /* RLGifModelMO+CoreDataClass.h */,
+				CEE4B3342138A595008B23BF /* RLGifModelMO+CoreDataClass.m */,
+				CEE4B3352138A595008B23BF /* RLGifModelMO+CoreDataProperties.m */,
 			);
 			name = CDManagedObjects;
 			path = ../..;
@@ -294,28 +299,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE4B33A2138A595008B23BF /* RLGifModelMO+CoreDataClass.m in Sources */,
 				CE1305592137698300FAAB86 /* RLMyStack.m in Sources */,
 				3D28A5DE213043EE0031AA6A /* RLMainViewController.swift in Sources */,
 				3D28A5CD212FFC2F0031AA6A /* RLJsonParser.m in Sources */,
-				CE13058D213773D200FAAB86 /* RLPreviewGifMO+CoreDataProperties.m in Sources */,
+				CEE4B3372138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m in Sources */,
 				CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */,
-				CE13058A213773D200FAAB86 /* RLDownsizedGifMO+CoreDataClass.m in Sources */,
+				CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */,
 				3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */,
-				CE13058C213773D200FAAB86 /* RLPreviewGifMO+CoreDataClass.m in Sources */,
 				CE351D5921332EB50016B2D5 /* Gif.m in Sources */,
 				3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */,
 				3D28A5C9212FFADC0031AA6A /* RLDownloader.m in Sources */,
 				3D28A5E42130693D0031AA6A /* Presenter2.swift in Sources */,
-				CE13058B213773D200FAAB86 /* RLDownsizedGifMO+CoreDataProperties.m in Sources */,
+				CEE4B3382138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m in Sources */,
 				3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */,
-				CE130589213773D200FAAB86 /* RLGifModelMO+CoreDataProperties.m in Sources */,
 				CE13054C2137528F00FAAB86 /* Connectivity.m in Sources */,
 				CE13056F2137711F00FAAB86 /* downloaderGifs.xcdatamodeld in Sources */,
 				3D28A5E0213045F20031AA6A /* GiphyModel2.swift in Sources */,
 				CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */,
 				3D28A5E2213051C50031AA6A /* ModelService2.swift in Sources */,
 				CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */,
-				CE130588213773D200FAAB86 /* RLGifModelMO+CoreDataClass.m in Sources */,
+				CEE4B33B2138A595008B23BF /* RLGifModelMO+CoreDataProperties.m in Sources */,
+				CEE4B3392138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m in Sources */,
+				CEF594B32138351D00C0111B /* RLFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

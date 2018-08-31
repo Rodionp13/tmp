@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum GifTypre: Int {
+    case preview = 0
+    case downsized
+}
+
 class ModelService2 {
     private let downloader: RLDownloader = RLDownloader.init()
     private let jSonParser: RLJsonParser = RLJsonParser.init()
@@ -16,61 +21,67 @@ class ModelService2 {
     
     
     public func startFetchingProcess(with url:String, and complition:@escaping()->Void) -> Void {
-        self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
-            
-            self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
-                let gifs = gifObjects as! [GiphyModel2]
-                self?.storeGifs(gifs)
-                complition();
-            })
+        let connection = Connectivity.isNetworkAvailable()
+        if(connection) {
+            self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
+                
+                self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
+                    let gifs = gifObjects as! [GiphyModel2]
+                    self?.storeGifs(gifs)
+                    complition();
+                })
+            }
         }
-    }
-    
-    public func getGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
-        print(gifs.count)
-        return gifs[indexPath.row]
-    }
-    
-    public func storeGifs(_ gifs: Array<GiphyModel2>) {
-        self.gifs.append(contentsOf: gifs)
-    }
-    
-    public func gifsCount() -> Int {
-        return self.gifs.count
     }
     
     //.........................................................................................................................//
     //.......................................................TEST..................................................................//
     //.........................................................................................................................//
     
-    public func fetchSmallGif(with indexPath: IndexPath, complitionBlock:@escaping (Data)->Void, second complition2:@escaping ((Array<IndexPath>)->Void))  -> Void {
-        guard let gif = self.getGif(withIndexPath: indexPath), let preview_gif = gif.preview_gif else {return}
-        let count = self.gifsCount() - 3
+    public func fetchDownsizedGif(with indexPath: IndexPath, complitionBlock:@escaping (Data)->Void)   -> Void {
         
-        if(indexPath.row != count) {
-            if let locationUrl = preview_gif.locationUrl {
-                let data:Data = try! Data.init(contentsOf: locationUrl)
-                complitionBlock(data);
-            } else {
-                self.startFetchingGif(with: preview_gif.url) { (data:Data?, locationUrl:URL?) in
-                    guard let locationUrl = locationUrl, let data = data else {return}
-                    preview_gif.locationUrl = locationUrl
-                    complitionBlock(data);
-                }
+        guard let gif = self.getGif(withIndexPath: indexPath), let downsized_gif = gif.downsized_medium else { return }
+        let connection = Connectivity.isNetworkAvailable()
+        if(connection) {
+            self.startFetchingGif(with: downsized_gif.url) { (data, locationUrl) in
+                print(locationUrl);
+                downsized_gif.originalName = locationUrl.lastPathComponent
+                complitionBlock(data);//                print(locationUrl);
             }
-        } else {
-            self.loadAdditionalSmallGifs2(indexPath) { (indises) in
-                complition2(indises);
-            }
-            
         }
     }
     
+    public func fetchSmallGif(with indexPath: IndexPath, complitionBlock:@escaping (Data?)->Void, second complition2:@escaping ((Array<IndexPath>)->Void))  -> Void {
+        
+        let connection: Bool = Connectivity.isNetworkAvailable()
+        guard let gif = self.getGif(withIndexPath: indexPath), let preview_gif = gif.preview_gif else { return }
+        let count = self.gifsCount() - 1
+        
+        if(connection) {
+            if(indexPath.row != count) {
+                if let originalName = preview_gif.originalName {
+                    let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
+                    let data:Data = try! Data.init(contentsOf: locationUrl!)
+                    complitionBlock(data);
+                } else {
+                    self.startFetchingGif(with: preview_gif.url) { (data, locationUrl) in
+                        preview_gif.originalName = locationUrl.lastPathComponent
+                        complitionBlock(data);
+                    }
+                }
+            } else {
+                self.loadAdditionalSmallGifs2(indexPath) { (indises) in
+                    complition2(indises);
+                }
+            }
+        } else { complitionBlock(nil) }
+    }
+    
+    
     private func startFetchingGif(with url: String, and complition:@escaping (Data, URL)->Void) -> Void {
         self.downloader.fetchGif(withUrl: url) { (data: Data?, locationUrl: URL?) in
-            guard let data = data, let locationUrl = locationUrl else {
-                return
-            }
+            
+            guard let data = data, let locationUrl = locationUrl else { return }
             complition(data,locationUrl);
         }
     }
@@ -87,5 +98,23 @@ class ModelService2 {
                 complition(indises);
         }
     }
+    
+    
+    //Accessory methods to Sourse gifs
+    public func getGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
+        print(gifs.count)
+        return gifs[indexPath.row]
+    }
+    
+    public func storeGifs(_ gifs: Array<GiphyModel2>) {
+        self.gifs.append(contentsOf: gifs)
+    }
+    
+    public func gifsCount() -> Int {
+        return self.gifs.count
+    }
+    
+    
+    
     
 }

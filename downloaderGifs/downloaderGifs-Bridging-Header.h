@@ -6,3 +6,5 @@
 #import "RLJsonParser.h"
 #import "ConstantsForParsing.h"
 #import "Connectivity.h"
+#import "RLCoreDataManager.h"
+#import "RLFileManager.h"

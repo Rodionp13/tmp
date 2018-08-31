@@ -17,7 +17,7 @@ class RLCollectionViewCell: UICollectionViewCell {
     }()
     
     let activityIndicator: UIActivityIndicatorView = {
-        let indicator: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
         return indicator
     }()
     

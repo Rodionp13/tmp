@@ -7,6 +7,7 @@
 //
 
 #import "RLDownloader.h"
+#import "RLFileManager.h"
 
 @implementation RLDownloader
 
@@ -33,16 +34,11 @@
     
     NSURLSessionDownloadTask *downloadTask = [defaultSession downloadTaskWithURL:[NSURL URLWithString:strUrl] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        NSFileManager *defaultManager = [NSFileManager defaultManager];
-        NSArray *urls = [defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
-        NSURL *cacheDirectory = [urls objectAtIndex:0];
-        NSURL *originalUrl = [NSURL URLWithString:[location lastPathComponent]];
-        NSURL *desctinationUrl = [cacheDirectory URLByAppendingPathComponent:[originalUrl lastPathComponent]];
-        [defaultManager copyItemAtURL:location toURL:desctinationUrl error:nil];
-        NSData *data = [NSData dataWithContentsOfURL:desctinationUrl];
+        NSURL *destinationUrl = [RLFileManager copyElementFrom:location to:NSCachesDirectory];
+        NSData *data = [NSData dataWithContentsOfURL:destinationUrl];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            complition(data, desctinationUrl);
+            complition(data, destinationUrl);
         });
         
     }];

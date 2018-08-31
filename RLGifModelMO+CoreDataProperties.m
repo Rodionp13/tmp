@@ -2,7 +2,7 @@
 //  RLGifModelMO+CoreDataProperties.m
 //  downloaderGifs
 //
-//  Created by User on 8/30/18.
+//  Created by User on 8/31/18.
 //  Copyright © 2018 Radzivon Uhrynovich. All rights reserved.
 //
 //
@@ -15,11 +15,11 @@
 	return [NSFetchRequest fetchRequestWithEntityName:@"RLGifModelEnt"];
 }
 
-@dynamic title;
-@dynamic rating;
 @dynamic import_datetime;
+@dynamic rating;
+@dynamic title;
 @dynamic trending_datetime;
-@dynamic previewGif;
 @dynamic downsizedGif;
+@dynamic previewGif;
 
 @end
