@@ -392,7 +392,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
-            timestampString = "557412141.907524"
+            timestampString = "557598624.092522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -429,7 +429,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -440,7 +440,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.909315"
+            timestampString = "557600210.811056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -456,12 +456,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.9094959"
+            timestampString = "557600210.811667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "download(_:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "configureLabels(withGifData:title:date:size:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -472,12 +472,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.909668"
+            timestampString = "557600210.812049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "download(_:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "configureLabels(withGifData:title:date:size:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -520,11 +520,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.909842"
+            timestampString = "557600210.812521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "prepateGifDataToPass(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
+            timestampString = "557600210.8131649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "shareAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,12 +552,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.910084"
+            timestampString = "557600210.813857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "willStartAddingNewRecordToDb()"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
+            timestampString = "557600210.814428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "configureImageView(withUrl:and:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -552,12 +584,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557412141.910327"
+            timestampString = "557600210.814887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "didEndAddingNewRecordToDb()"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "configureImageView(withUrl:and:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

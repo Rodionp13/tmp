@@ -62,29 +62,30 @@ class RLDetailedViewController: UIViewController {
     
     
     private func configureImageView(withUrl strUrl:String, and mainIndicator: UIActivityIndicatorView) -> Void {
-        mainIndicator.isHidden = false
-        mainIndicator.startAnimating()
+        self.presentUiElements(isPresented: false)
         guard let originalName = self.gif.downsized_medium?.originalName else {
-            //if gif hasn't originalName -> then Download gif
             self.presenter.fetchDownsizedGif(with: self.indexPath!) { [weak self] (data) in
                 guard let data = data else { return }
                 self?.gifImageView.image = UIImage.gif(data: data)
+                self?.presentUiElements(isPresented: true)
             }
             return
         }
         //if gif has original Name
         let data = try! Data.init(contentsOf: RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory))
         self.gifImageView.image = UIImage.gif(data: data)
-        
-        //check connectivity
-        Connectivity.networkCondition({ [weak self] in
-            self?.downloadBttn.isHidden = false
-            mainIndicator.stopAnimating()
-            mainIndicator.isHidden = true
-        }) { [weak self] in
-            self?.downloadBttn.isHidden = true
-            self?.mainIndicator.stopAnimating()
-            self?.mainIndicator.isHidden = true
+        self.presentUiElements(isPresented: true)
+    }
+    
+    private func presentUiElements(isPresented: Bool) -> Void {
+        if(isPresented) {
+            self.mainIndicator.isHidden = true
+            self.mainIndicator.stopAnimating()
+            self.downloadBttn.isHidden = false
+            self.shareBttn.isHidden = false
+        } else {
+            self.mainIndicator.isHidden = false
+            self.mainIndicator.startAnimating()
         }
     }
     
