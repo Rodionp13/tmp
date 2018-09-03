@@ -30,14 +30,14 @@ class RLSearchViewController: UIViewController {
         super.viewDidLoad()
         self.setUpSearchBar()
         self.setupCollectionView()
+        self.presenter.modelService.removeAllItims()
         self.title = self.topicString
+        self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
         self.presenter.delegate3 = self
-        //self.presenter.getQueryString(topic: self.topicString)
-        self.presenter.startFetchingProcess(with: "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+(self.topicString)+"&offset=0", storeType: .searchedGifs) { [weak self] (nil) in
+        self.presenter.startFetchingProcess(with: self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
             self?.collectionView.reloadData()
         }
     }
-    
     
     private func setUpSearchBar() {
         self.searchBar = UISearchBar(frame: .zero)
@@ -153,8 +153,15 @@ extension RLSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.presenter.startFetchingProcess(with: "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+(self.topicString)+"&offset=0", storeType: .searchedGifs) { [weak self] (nil) in
-            self?.collectionView.reloadData()
+        self.title = self.topicString
+        self.collectionView.reloadData()
+        self.presenter.modelService.removeAllItims()
+        self.presenter.modelService.getConfigArr().map { [weak self] (config) in
+            if(config.isSelected == true) {
+                self?.presenter.startFetchingProcess(with: "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+(self?.topicString)!+"&offset=0"+"&rating=\(config.rating)", storeType: .searchedGifs) { [weak self] (nil) in
+                    self?.collectionView.reloadData()
+                }
+            }
         }
     }
     

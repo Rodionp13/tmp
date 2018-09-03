@@ -11,7 +11,7 @@ import UIKit
 
 class RLMainViewController: UIViewController {
     
-    fileprivate let presenter: Presenter2 = Presenter2.init()
+    fileprivate var presenter: Presenter2!
     fileprivate var collectionView: UICollectionView!
     fileprivate var topicStringToPass: String!
     fileprivate let cellID = "mainCell"
@@ -30,11 +30,12 @@ class RLMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white//for check
+        self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
+        self.presenter.delegate = self
         self.title = "Gify search"
         self.setUpSearchBar()
         self.setupCollectionView()
-        self.presenter.delegate = self
+        self.setUpConfigBttn()
         
         self.presenter.startFetchingProcess(with: kTrendingGifsUrl, storeType: .trendingGifs) { [weak self] (nil) in
             self?.collectionView.reloadData()
@@ -45,13 +46,16 @@ class RLMainViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchBar.text = ""
+    }
+    
     private func setUpSearchBar() {
-        self.searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 7))
+        self.searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
-//        self.navigationItem.titleView = searchBar
         self.view.addSubview(self.searchBar)
         self.setUpConstarints(to: self.searchBar)
-        self.searchBar.backgroundColor = UIColor.black
     }
     
     private func setupCollectionView() {
@@ -66,22 +70,17 @@ class RLMainViewController: UIViewController {
     
     private func setUpConfigBttn() {
         let rightBttn = UIButton.init(type: UIButtonType.custom)
-        
-        rightBttn.layer.borderWidth = 2
-        rightBttn.layer.borderColor = UIColor.red.cgColor
-        rightBttn.titleLabel?.text = "Config"
-        rightBttn.title(for: UIControlState.normal)
-        rightBttn.titleLabel?.textColor = UIColor.red
-        rightBttn.titleColor(for: UIControlState.normal)
+        rightBttn.setTitle("Config", for: UIControlState.normal)
+        rightBttn.setTitleColor(UIColor.red, for: UIControlState.normal)
         rightBttn.addTarget(self, action: #selector(configAction), for: UIControlEvents.touchUpInside)
         
-        let rightBarButtnItem: UIBarButtonItem = UIBarButtonItem.init(customView: rightBttn)
-        self.navigationItem.rightBarButtonItem = rightBarButtnItem
+        let rightBarBttnItem: UIBarButtonItem = UIBarButtonItem(customView: rightBttn)
+        self.navigationItem.rightBarButtonItem = rightBarBttnItem
     }
     
     @objc func configAction(_ sender: UIButton) {
         let configVC = RLConfigViewController.init()
-        self.navigationController?.present(configVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(configVC, animated: true)
     }
     
     fileprivate func prepareCellForPresentation(with cell: RLCollectionViewCell, and indexPath: IndexPath, on collectionView: UICollectionView) -> Void {
@@ -92,21 +91,21 @@ class RLMainViewController: UIViewController {
         cell.activityIndicator.isHidden = false
         let connection = Connectivity.isNetworkAvailable()
         
-        self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.trending, storeType: .trendingGifs, topic: nil) { [weak self] (data:Data?) in
+        self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.trending, storeType: .trendingGifs, topic: nil) { (data:Data?) in
             if(connection) {
             cell.activityIndicator.stopAnimating()
             cell.activityIndicator.isHidden = true
             }
-            guard let data = data else {
-                guard let originalName = self?.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs)?.preview_gif?.originalName else { return }
-                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
-                let data = try? Data.init(contentsOf: locationUrl!)
-                cell.imgView.image = UIImage.gif(data: data!)
-                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-                cell.activityIndicator.stopAnimating()
-                cell.activityIndicator.isHidden = true
-                return
-            }
+            guard let data = data else { return }
+//                guard let originalName = self?.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs)?.preview_gif?.originalName else { return }
+//                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
+//                let data = try? Data.init(contentsOf: locationUrl!)
+//                cell.imgView.image = UIImage.gif(data: data!)
+//                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+//                cell.activityIndicator.stopAnimating()
+//                cell.activityIndicator.isHidden = true
+//                return
+//            }
             cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
             cell.imgView.image = UIImage.gif(data: data)
         }
@@ -132,8 +131,6 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailedVC = RLDetailedViewController.init(nibName: "RLDetailedViewController", bundle: nil)
         detailedVC.indexPath = indexPath
-//        detailedVC.gif = self.presenter.modelService.getGif(withIndexPath: indexPath)
-        detailedVC.presenter = self.presenter
         detailedVC.storeType = StoreTypre.trendingGifs
         if(self.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
     }
@@ -159,9 +156,8 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension RLMainViewController: PresenterDelegate {
     
     func updateCollectionAfterLoading(indisesToUpdate indises: Array<IndexPath>) {
-//        self.collectionView.insertItems(at: indises)
-//        self.collectionView.reloadItems(at: indises)
-        self.collectionView.reloadData()
+        self.collectionView.insertItems(at: indises)
+        self.collectionView.reloadItems(at: indises)
     }
     
     func loadingDidStart(_ indexPath: IndexPath) {}
@@ -173,6 +169,7 @@ extension RLMainViewController: PresenterDelegate {
         alert.addAction(action)
         self.present(alert, animated: true) { print("alert became") }
     }
+        
 }
 
 extension RLMainViewController: UISearchBarDelegate {
@@ -192,11 +189,11 @@ extension RLMainViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        let searchVC = RLSearchViewController.init()
-        searchVC.topicString = self.topicStringToPass
-        searchVC.presenter = self.presenter
-        self.navigationController?.pushViewController(searchVC, animated: true)
+            self.searchBar.resignFirstResponder()
+            let searchVC = RLSearchViewController.init()
+            searchVC.topicString = self.topicStringToPass
+            searchVC.presenter = self.presenter
+            self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -206,10 +203,11 @@ extension RLMainViewController: UISearchBarDelegate {
 }
 
 extension UIViewController {
+    
     func setUpConstraints(to collection:UICollectionView, and searchBar: UISearchBar) {
         collection.translatesAutoresizingMaskIntoConstraints = false
         let safe = self.view.safeAreaLayoutGuide
-        collection.topAnchor.constraint(equalTo: searchBar.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true
+        collection.topAnchor.constraint(equalTo: searchBar.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         collection.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 0).isActive = true
         collection.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: 0).isActive = true
         collection.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: 0).isActive = true
@@ -222,6 +220,15 @@ extension UIViewController {
         searchBar.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 0).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: 0).isActive = true
         searchBar.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.1).isActive = true
+    }
+    
+    func setUpConstraints(to tableView: UITableView) {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let safe = self.view.safeAreaLayoutGuide
+        tableView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 0).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: 0).isActive = true
     }
 
 }

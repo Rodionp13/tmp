@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLJsonParser/RLJsonParser.m"
-            timestampString = "557627781.237591"
+            timestampString = "557684863.945098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "-parseFetchedJsonDataWithDict:withComplition:"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLJsonParser/RLJsonParser.m"
-            timestampString = "557627781.237702"
+            timestampString = "557684863.945508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-parseFetchedJsonDataWithDict:withComplition:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLMainViewController.swift"
-            timestampString = "557627781.237793"
+            timestampString = "557684863.9455841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472118"
+            timestampString = "557657925.848506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472295"
+            timestampString = "557657925.848891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472389"
+            timestampString = "557657925.848973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.47247"
+            timestampString = "557657925.84904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472596"
+            timestampString = "557657925.849102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472729"
+            timestampString = "557657925.849164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -297,7 +297,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.47281"
+            timestampString = "557657925.849225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -313,7 +313,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472878"
+            timestampString = "557657925.849287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -376,7 +376,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/CDManager/RLCoreDataManager.m"
-            timestampString = "557622868.472944"
+            timestampString = "557657925.8493479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -392,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
-            timestampString = "557627781.239553"
+            timestampString = "557684863.946829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "fetchDownsizedGif(with:type:complitionBlock:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLMainViewController.swift"
-            timestampString = "557627781.239746"
+            timestampString = "557684863.9471999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.240904"
+            timestampString = "557684863.947835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.2411211"
+            timestampString = "557684863.9482501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "configureLabels(withGifData:title:date:size:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241259"
+            timestampString = "557684863.94836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "configureLabels(withGifData:title:date:size:)"
             landmarkType = "7">
             <Locations>
@@ -504,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241389"
+            timestampString = "557684863.94845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "prepateGifDataToPass(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -520,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241538"
+            timestampString = "557684863.948536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "shareAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241644"
+            timestampString = "557684863.948619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -552,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241766"
+            timestampString = "557684863.948712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "configureImageView(withUrl:and:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -568,28 +568,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLDetailedViewController/RLDetailedViewController.swift"
-            timestampString = "557627781.241917"
+            timestampString = "557684863.948806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "configureImageView(withUrl:and:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "downloaderGifs/RLMainViewController.swift"
-            timestampString = "557627781.242081"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -648,7 +632,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/Presenter/Presenter2.swift"
-            timestampString = "557627781.243596"
+            timestampString = "557684863.948953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -664,13 +648,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
-            timestampString = "557627781.243733"
+            timestampString = "557684863.949344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "ModelService2"
-            landmarkType = "3">
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "getQueryString(queryType:topicStr:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -680,13 +664,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
-            timestampString = "557627781.243849"
+            timestampString = "557684863.949463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "ModelService2"
-            landmarkType = "3">
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "loadAdditionalSmallGifs2(with:queryType:storeType:topic:and:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -696,13 +680,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
-            timestampString = "557627781.243957"
+            timestampString = "557684863.949571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "ModelService2"
-            landmarkType = "3">
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "fetchSmallGif(with:queryTypre:storeType:topic:complitionBlock:second:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLSearchViewController/RLSearchViewController.swift"
+            timestampString = "557684863.94968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -712,13 +712,380 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "downloaderGifs/RLMainViewController.swift"
-            timestampString = "557627781.244068"
+            timestampString = "557684863.950067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "searchBar(_:textDidChange:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "prepareCellForPresentation(with:and:on:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.RLMainViewController.(prepareCellForPresentation in _4C58DFFBEE947AF5DCD18FB3FEF9316C)(with: downloaderGifs.RLCollectionViewCell, and: Foundation.IndexPath, on: __ObjC.UICollectionView) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/RLMainViewController.swift"
+                  timestampString = "557669375.16048"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "529">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;) -&gt; () in downloaderGifs.RLMainViewController.(prepareCellForPresentation in _4C58DFFBEE947AF5DCD18FB3FEF9316C)(with: downloaderGifs.RLCollectionViewCell, and: Foundation.IndexPath, on: __ObjC.UICollectionView) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/RLMainViewController.swift"
+                  timestampString = "557669375.1643291"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "67">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLMainViewController.swift"
+            timestampString = "557684863.950894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "prepareCellForPresentation(with:and:on:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLMainViewController.swift"
+            timestampString = "557684863.951712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "prepareCellForPresentation(with:and:on:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
+            timestampString = "557684863.952443"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init(downloader:jSonParser:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.ModelService2.__allocating_init(downloader: __ObjC.RLDownloader, jSonParser: __ObjC.RLJsonParser) -&gt; downloaderGifs.ModelService2"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ModelGiphy/ModelService2.swift"
+                  timestampString = "557675225.317901"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.ModelService2.init(downloader: __ObjC.RLDownloader, jSonParser: __ObjC.RLJsonParser) -&gt; downloaderGifs.ModelService2"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ModelGiphy/ModelService2.swift"
+                  timestampString = "557675225.320524"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
+            timestampString = "557684863.952567"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "itemArchiveUrl"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of downloaderGifs.ModelService2.itemArchiveUrl : __ObjC.NSURL"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ModelGiphy/ModelService2.swift"
+                  timestampString = "557672926.4616539"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __ObjC.NSURL in variable initialization expression of downloaderGifs.ModelService2.itemArchiveUrl : __ObjC.NSURL"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ModelGiphy/ModelService2.swift"
+                  timestampString = "557672926.465449"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.ModelService2.itemArchiveUrl.getter : __ObjC.NSURL"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ModelGiphy/ModelService2.swift"
+                  timestampString = "557672926.4698271"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLAppDelegate.swift"
+            timestampString = "557684863.9527431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLAppDelegate.swift"
+            timestampString = "557684863.953354"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "applicationDidEnterBackground(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
+            timestampString = "557684863.953494"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "init(downloader:jSonParser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
+            timestampString = "557684863.953607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "init(downloader:jSonParser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ModelGiphy/ModelService2.swift"
+            timestampString = "557684863.953732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "init(downloader:jSonParser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ConfigTableView/RLConfigViewController.swift"
+            timestampString = "557684863.953856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/RLSearchViewController/RLSearchViewController.swift"
+            timestampString = "557684863.954507"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.RLSearchViewController.searchBarSearchButtonClicked(__ObjC.UISearchBar) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/RLSearchViewController/RLSearchViewController.swift"
+                  timestampString = "557684864.195755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "994">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (downloaderGifs.ConfigModel) -&gt; () in downloaderGifs.RLSearchViewController.searchBarSearchButtonClicked(__ObjC.UISearchBar) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/RLSearchViewController/RLSearchViewController.swift"
+                  timestampString = "557684864.1998481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "downloaderGifs/ConfigTableView/RLConfigViewController.swift"
+            timestampString = "557684875.2576261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "setLastSelectionOfConfigObj(configObjects:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "downloaderGifs.RLConfigViewController.setLastSelectionOfConfigObj(configObjects: Swift.Array&lt;downloaderGifs.ConfigModel&gt;) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ConfigTableView/RLConfigViewController.swift"
+                  timestampString = "557684875.478717"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (downloaderGifs.ConfigModel) -&gt; () in downloaderGifs.RLConfigViewController.setLastSelectionOfConfigObj(configObjects: Swift.Array&lt;downloaderGifs.ConfigModel&gt;) -&gt; ()"
+                  moduleName = "downloaderGifs"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/downloaderGifs/tmp/downloaderGifs/ConfigTableView/RLConfigViewController.swift"
+                  timestampString = "557684875.484255"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -116,11 +116,6 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="SwK-C2-v2k">
-                    <rect key="frame" x="30" y="417.5" width="315" height="2.5"/>
-                    <color key="progressTintColor" red="0.95686274770000002" green="0.20925800789999999" blue="0.059248388280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </progressView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Kq-7sd">
                     <rect key="frame" x="315" y="479" width="40" height="30"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,20 +127,17 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="3qm-ZV-k40" firstAttribute="trailing" secondItem="hfH-Kq-7sd" secondAttribute="trailing" constant="20" id="0eN-cZ-MQO"/>
                 <constraint firstItem="mDb-F2-ZEF" firstAttribute="top" secondItem="3qm-ZV-k40" secondAttribute="top" constant="20" id="0pc-et-vQN"/>
-                <constraint firstItem="SwK-C2-v2k" firstAttribute="top" secondItem="dPN-Lx-LJ9" secondAttribute="bottom" constant="20" id="2j3-NN-BtJ"/>
                 <constraint firstItem="vTf-Ct-zsZ" firstAttribute="top" secondItem="mDb-F2-ZEF" secondAttribute="bottom" constant="8" id="6gR-Un-8pn"/>
                 <constraint firstItem="3qm-ZV-k40" firstAttribute="trailing" secondItem="mDb-F2-ZEF" secondAttribute="trailing" constant="8" id="8Sr-el-mhQ"/>
                 <constraint firstItem="vTf-Ct-zsZ" firstAttribute="height" secondItem="3qm-ZV-k40" secondAttribute="height" multiplier="0.4" id="BZL-9c-MnW"/>
-                <constraint firstAttribute="trailing" secondItem="SwK-C2-v2k" secondAttribute="trailing" constant="30" id="CIO-17-R6I"/>
                 <constraint firstItem="3qm-ZV-k40" firstAttribute="trailing" secondItem="vTf-Ct-zsZ" secondAttribute="trailing" constant="8" id="OW9-Ag-vaZ"/>
                 <constraint firstItem="3qm-ZV-k40" firstAttribute="trailing" secondItem="dPN-Lx-LJ9" secondAttribute="trailing" constant="8" id="TbZ-gJ-Gvg"/>
-                <constraint firstItem="3qm-ZV-k40" firstAttribute="trailing" secondItem="hfH-Kq-7sd" secondAttribute="trailing" constant="20" id="TqV-9N-i3C"/>
                 <constraint firstItem="vTf-Ct-zsZ" firstAttribute="leading" secondItem="3qm-ZV-k40" secondAttribute="leading" constant="8" id="UJf-v2-z3I"/>
                 <constraint firstItem="mDb-F2-ZEF" firstAttribute="leading" secondItem="3qm-ZV-k40" secondAttribute="leading" constant="8" id="c8E-WM-w55"/>
-                <constraint firstItem="SwK-C2-v2k" firstAttribute="leading" secondItem="enI-1z-5xH" secondAttribute="leading" constant="30" id="cyg-nM-Enl"/>
                 <constraint firstItem="dPN-Lx-LJ9" firstAttribute="leading" secondItem="3qm-ZV-k40" secondAttribute="leading" constant="8" id="dxR-nN-ucF"/>
-                <constraint firstItem="hfH-Kq-7sd" firstAttribute="top" secondItem="SwK-C2-v2k" secondAttribute="bottom" constant="60" id="jdy-rq-gE2"/>
+                <constraint firstItem="hfH-Kq-7sd" firstAttribute="top" secondItem="dPN-Lx-LJ9" secondAttribute="bottom" constant="81.5" id="lPd-GM-idx"/>
                 <constraint firstItem="dPN-Lx-LJ9" firstAttribute="top" secondItem="vTf-Ct-zsZ" secondAttribute="bottom" constant="8" id="w1i-6O-eh0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="3qm-ZV-k40"/>

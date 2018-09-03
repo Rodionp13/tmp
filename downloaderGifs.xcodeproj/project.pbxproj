@@ -25,7 +25,9 @@
 		CECE94E9213C60FA002965F7 /* RLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */; };
 		CECE94FA213CB650002965F7 /* RLConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94F9213CB650002965F7 /* RLConfigViewController.swift */; };
 		CECE94FC213CB677002965F7 /* RLConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */; };
-		CECE956A213CBCAC002965F7 /* rss_reader_tut_byTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */; };
+		CED70FF2213D1B3B009EDD86 /* RLMainVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */; };
+		CED70FFB213D1E35009EDD86 /* RlDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */; };
+		CED70FFD213D3B86009EDD86 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED70FFC213D3B86009EDD86 /* ConfigModel.swift */; };
 		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
 		CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB75062136131B00528CFF /* RLAppDelegate.swift */; };
 		CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */; };
@@ -36,6 +38,16 @@
 		CEE4B33B2138A595008B23BF /* RLGifModelMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3352138A595008B23BF /* RLGifModelMO+CoreDataProperties.m */; };
 		CEF594B32138351D00C0111B /* RLFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF594B22138351D00C0111B /* RLFileManager.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CED70FF4213D1B3B009EDD86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DF840BE212EC07B00E23A8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DF840C5212EC07B00E23A8F;
+			remoteInfo = downloaderGifs;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3D28A5C7212FFADC0031AA6A /* RLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLDownloader.h; sourceTree = "<group>"; };
@@ -64,7 +76,12 @@
 		CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLSearchViewController.swift; sourceTree = "<group>"; };
 		CECE94F9213CB650002965F7 /* RLConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigViewController.swift; sourceTree = "<group>"; };
 		CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigTableViewCell.swift; sourceTree = "<group>"; };
-		CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rss_reader_tut_byTests.m; sourceTree = "<group>"; };
+		CED70FEF213D1B3A009EDD86 /* downloaderGifsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = downloaderGifsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMainVCTests.swift; sourceTree = "<group>"; };
+		CED70FF3213D1B3B009EDD86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CED70FF9213D1E35009EDD86 /* downloaderGifsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "downloaderGifsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RlDownloaderTests.m; sourceTree = "<group>"; };
+		CED70FFC213D3B86009EDD86 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
 		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
 		CEDB75062136131B00528CFF /* RLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLAppDelegate.swift; sourceTree = "<group>"; };
 		CEE4B32A2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -85,6 +102,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		3DF840C3212EC07B00E23A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CED70FEC213D1B3A009EDD86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,6 +147,7 @@
 				3D28A5E1213051C50031AA6A /* ModelService2.swift */,
 				3D28A5DF213045F20031AA6A /* GiphyModel2.swift */,
 				3D3504622133FF9700B11184 /* GIF+UIImageView.swift */,
+				CED70FFE213D3B8F009EDD86 /* ConfigModel */,
 			);
 			path = ModelGiphy;
 			sourceTree = "<group>";
@@ -140,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF840C8212EC07B00E23A8F /* downloaderGifs */,
+				CED70FF0213D1B3B009EDD86 /* downloaderGifsTests */,
 				3DF840C7212EC07B00E23A8F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF840C6212EC07B00E23A8F /* downloaderGifs.app */,
+				CED70FEF213D1B3A009EDD86 /* downloaderGifsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,7 +194,6 @@
 				3D28A5CE212FFCA50031AA6A /* RLJsonParser */,
 				CE13054D2137657B00FAAB86 /* CDManager */,
 				3D28A5D8213032A30031AA6A /* downloaderGifs-Bridging-Header.h */,
-				CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */,
 				3DF840CF212EC07B00E23A8F /* Main.storyboard */,
 				3DF840D2212EC07C00E23A8F /* Assets.xcassets */,
 				3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */,
@@ -232,6 +258,25 @@
 			path = ConfigTableView;
 			sourceTree = "<group>";
 		};
+		CED70FF0213D1B3B009EDD86 /* downloaderGifsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */,
+				CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */,
+				CED70FF3213D1B3B009EDD86 /* Info.plist */,
+				CED70FF9213D1E35009EDD86 /* downloaderGifsTests-Bridging-Header.h */,
+			);
+			path = downloaderGifsTests;
+			sourceTree = "<group>";
+		};
+		CED70FFE213D3B8F009EDD86 /* ConfigModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED70FFC213D3B86009EDD86 /* ConfigModel.swift */,
+			);
+			path = ConfigModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,18 +297,42 @@
 			productReference = 3DF840C6212EC07B00E23A8F /* downloaderGifs.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CED70FEE213D1B3A009EDD86 /* downloaderGifsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CED70FF6213D1B3B009EDD86 /* Build configuration list for PBXNativeTarget "downloaderGifsTests" */;
+			buildPhases = (
+				CED70FEB213D1B3A009EDD86 /* Sources */,
+				CED70FEC213D1B3A009EDD86 /* Frameworks */,
+				CED70FED213D1B3A009EDD86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CED70FF5213D1B3B009EDD86 /* PBXTargetDependency */,
+			);
+			name = downloaderGifsTests;
+			productName = downloaderGifsTests;
+			productReference = CED70FEF213D1B3A009EDD86 /* downloaderGifsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3DF840BE212EC07B00E23A8F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Radzivon Uhrynovich";
 				TargetAttributes = {
 					3DF840C5212EC07B00E23A8F = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+					};
+					CED70FEE213D1B3A009EDD86 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+						TestTargetID = 3DF840C5212EC07B00E23A8F;
 					};
 				};
 			};
@@ -281,6 +350,7 @@
 			projectRoot = "";
 			targets = (
 				3DF840C5212EC07B00E23A8F /* downloaderGifs */,
+				CED70FEE213D1B3A009EDD86 /* downloaderGifsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -294,6 +364,13 @@
 				3D3600902136C03300ABEDCC /* RLDetailedViewController.xib in Resources */,
 				3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */,
 				3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CED70FED213D1B3A009EDD86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,15 +400,32 @@
 				CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */,
 				CECE94E9213C60FA002965F7 /* RLSearchViewController.swift in Sources */,
 				3D28A5E2213051C50031AA6A /* ModelService2.swift in Sources */,
+				CED70FFD213D3B86009EDD86 /* ConfigModel.swift in Sources */,
 				CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */,
 				CEE4B33B2138A595008B23BF /* RLGifModelMO+CoreDataProperties.m in Sources */,
 				CEE4B3392138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m in Sources */,
-				CECE956A213CBCAC002965F7 /* rss_reader_tut_byTests.m in Sources */,
 				CEF594B32138351D00C0111B /* RLFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CED70FEB213D1B3A009EDD86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED70FFB213D1E35009EDD86 /* RlDownloaderTests.m in Sources */,
+				CED70FF2213D1B3B009EDD86 /* RLMainVCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CED70FF5213D1B3B009EDD86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DF840C5212EC07B00E23A8F /* downloaderGifs */;
+			targetProxy = CED70FF4213D1B3B009EDD86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3DF840CF212EC07B00E23A8F /* Main.storyboard */ = {
@@ -502,6 +596,52 @@
 			};
 			name = Release;
 		};
+		CED70FF7213D1B3B009EDD86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = downloaderGifsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bnr.downloaderGifsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "downloaderGifsTests/downloaderGifsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downloaderGifs.app/downloaderGifs";
+			};
+			name = Debug;
+		};
+		CED70FF8213D1B3B009EDD86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = downloaderGifsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bnr.downloaderGifsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "downloaderGifsTests/downloaderGifsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downloaderGifs.app/downloaderGifs";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,6 +659,15 @@
 			buildConfigurations = (
 				3DF840DD212EC07C00E23A8F /* Debug */,
 				3DF840DE212EC07C00E23A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CED70FF6213D1B3B009EDD86 /* Build configuration list for PBXNativeTarget "downloaderGifsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED70FF7213D1B3B009EDD86 /* Debug */,
+				CED70FF8213D1B3B009EDD86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

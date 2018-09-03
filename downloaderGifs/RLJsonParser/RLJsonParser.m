@@ -8,8 +8,9 @@
 
 #import "RLJsonParser.h"
 #import "ConstantsForParsing.h"
+//#import "GiphyModel.h"
 #import "downloaderGifs-Swift.h"
-#import "GiphyModel.h"
+
 
 
 typedef BOOL(^CheckBlock)(NSArray*);

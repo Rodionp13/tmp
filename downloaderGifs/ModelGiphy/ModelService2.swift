@@ -20,13 +20,33 @@ enum StoreTypre: Int {
 }
 
 class ModelService2 {
-    private let downloader: RLDownloader = RLDownloader.init()
-    private let jSonParser: RLJsonParser = RLJsonParser.init()
+    private let downloader: RLDownloader
+    private let jSonParser: RLJsonParser
     private var gifs = Array<GiphyModel2>()
     private var searchedGifs = Array<GiphyModel2>()
     private var offset: Int = 0
-    private var configObjArr = Array<GiphyModel2>()
+    private var configObjArr = Array<ConfigModel>()
     
+    let itemArchiveUrl: NSURL = {
+        let directories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        var docDirectory = directories.first!
+        let locationUrl: NSURL = docDirectory.appendingPathComponent("items.archive") as NSURL
+        return locationUrl
+    }()
+    
+    init(downloader: RLDownloader, jSonParser: RLJsonParser) {
+        self.downloader = downloader
+        self.jSonParser = jSonParser
+        
+        if let archiveItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveUrl.path!) as? [ConfigModel] {
+                self.configObjArr.append(contentsOf: archiveItems)
+            print(self.configObjArr)
+            print(self.configObjArr.count)
+        } else {
+            configObjArr = [ConfigModel.init(rating: "y"), ConfigModel.init(rating: "p"), ConfigModel.init(rating: "pg")]
+            print(self.configObjArr)
+        }
+    }
     
     public func startFetchingProcess(with url:String, type:StoreTypre, and complition:@escaping()->Void) -> Void {
         let connection = Connectivity.isNetworkAvailable()
@@ -137,7 +157,7 @@ class ModelService2 {
         }
     }
     
-    private func handleTopicString(topic: String) -> String {
+    public func handleTopicString(topic: String) -> String {
         return String(topic.map({$0 == " " ? "+" : $0})).lowercased()
     }
     
@@ -176,7 +196,33 @@ class ModelService2 {
     }
     
     
-
+    
+    public func removeAllItims() -> Void {
+        self.searchedGifs.removeAll()
+    }
+    
+    public func getConfigObj(with indexPath: IndexPath) -> ConfigModel? {
+        return self.configObjArr[indexPath.row]
+    }
+    
+    public func getConfigArr() -> [ConfigModel] {
+        return self.configObjArr
+    }
+    
+    public func configArrCount() -> Int {
+        return self.configObjArr.count
+    }
+    
+    func saveConfigToDb() -> Void {
+        let success = NSKeyedArchiver.archiveRootObject(self.configObjArr, toFile: itemArchiveUrl.path!)
+        if(success) {
+            print("Saved data Successfuly")
+        } else {
+            print("Something's wrong!!! data are not saved")
+        }
+    }
+    
+    
 }
 
 

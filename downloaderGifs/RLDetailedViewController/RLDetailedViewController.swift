@@ -37,6 +37,7 @@ class RLDetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
         self.presenter.delegate2 = self
         self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!, withType: self.storeType)
         

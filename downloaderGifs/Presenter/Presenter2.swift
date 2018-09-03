@@ -28,7 +28,7 @@ import Foundation
 
 
 class Presenter2 {
-    let modelService: ModelService2 = ModelService2.init()
+    let modelService: ModelService2 = ModelService2.init(downloader: RLDownloader.init(), jSonParser: RLJsonParser.init())
     private let cdManager: RLCoreDataManager = RLCoreDataManager.init();
     weak var delegate: PresenterDelegate?
     weak var delegate2: DetailedPresenterDelegate?
