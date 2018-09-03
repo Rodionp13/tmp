@@ -32,12 +32,13 @@ class RLDetailedViewController: UIViewController {
     var gif: GiphyModel2!
     var indexPath: IndexPath?
     var presenter: Presenter2!
+    var storeType: StoreTypre!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.delegate2 = self
-        self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!)
+        self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!, withType: self.storeType)
         
         self.downloadIndicator.isHidden = true
         self.configureButtons(downloadBttn: self.downloadBttn, shareBttn: self.shareBttn)
@@ -64,7 +65,7 @@ class RLDetailedViewController: UIViewController {
     private func configureImageView(withUrl strUrl:String, and mainIndicator: UIActivityIndicatorView) -> Void {
         self.presentUiElements(isPresented: false)
         guard let originalName = self.gif.downsized_medium?.originalName else {
-            self.presenter.fetchDownsizedGif(with: self.indexPath!) { [weak self] (data) in
+            self.presenter.fetchDownsizedGif(with: self.indexPath!, storeType: self.storeType) { [weak self] (data) in
                 guard let data = data else { return }
                 self?.gifImageView.image = UIImage.gif(data: data)
                 self?.presentUiElements(isPresented: true)

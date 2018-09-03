@@ -19,12 +19,13 @@
 		3DF840D1212EC07B00E23A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840CF212EC07B00E23A8F /* Main.storyboard */; };
 		3DF840D3212EC07C00E23A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D2212EC07C00E23A8F /* Assets.xcassets */; };
 		3DF840D6212EC07C00E23A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */; };
-		3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF840E0212EEBE600E23A8F /* GiphyModel.m */; };
 		CE13054C2137528F00FAAB86 /* Connectivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13054B2137528F00FAAB86 /* Connectivity.m */; };
 		CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13054F213765A800FAAB86 /* RLCoreDataManager.m */; };
-		CE1305592137698300FAAB86 /* RLMyStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1305582137698300FAAB86 /* RLMyStack.m */; };
 		CE13056F2137711F00FAAB86 /* downloaderGifs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE13056D2137711F00FAAB86 /* downloaderGifs.xcdatamodeld */; };
-		CE351D5921332EB50016B2D5 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = CE351D5821332EB50016B2D5 /* Gif.m */; };
+		CECE94E9213C60FA002965F7 /* RLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */; };
+		CECE94FA213CB650002965F7 /* RLConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94F9213CB650002965F7 /* RLConfigViewController.swift */; };
+		CECE94FC213CB677002965F7 /* RLConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */; };
+		CECE956A213CBCAC002965F7 /* rss_reader_tut_byTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */; };
 		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
 		CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB75062136131B00528CFF /* RLAppDelegate.swift */; };
 		CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */; };
@@ -55,17 +56,15 @@
 		3DF840D2212EC07C00E23A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF840D5212EC07C00E23A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DF840D7212EC07C00E23A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DF840DF212EEBE600E23A8F /* GiphyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiphyModel.h; sourceTree = "<group>"; };
-		3DF840E0212EEBE600E23A8F /* GiphyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiphyModel.m; sourceTree = "<group>"; };
 		CE13054A2137528F00FAAB86 /* Connectivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connectivity.h; sourceTree = "<group>"; };
 		CE13054B2137528F00FAAB86 /* Connectivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Connectivity.m; sourceTree = "<group>"; };
 		CE13054E213765A800FAAB86 /* RLCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLCoreDataManager.h; sourceTree = "<group>"; };
 		CE13054F213765A800FAAB86 /* RLCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLCoreDataManager.m; sourceTree = "<group>"; };
-		CE1305572137698300FAAB86 /* RLMyStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLMyStack.h; sourceTree = "<group>"; };
-		CE1305582137698300FAAB86 /* RLMyStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLMyStack.m; sourceTree = "<group>"; };
 		CE13056E2137711F00FAAB86 /* downloaderGifs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = downloaderGifs.xcdatamodel; sourceTree = "<group>"; };
-		CE351D5721332EB50016B2D5 /* Gif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
-		CE351D5821332EB50016B2D5 /* Gif.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
+		CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLSearchViewController.swift; sourceTree = "<group>"; };
+		CECE94F9213CB650002965F7 /* RLConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigViewController.swift; sourceTree = "<group>"; };
+		CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigTableViewCell.swift; sourceTree = "<group>"; };
+		CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rss_reader_tut_byTests.m; sourceTree = "<group>"; };
 		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
 		CEDB75062136131B00528CFF /* RLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLAppDelegate.swift; sourceTree = "<group>"; };
 		CEE4B32A2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -159,14 +158,16 @@
 				CEDB75062136131B00528CFF /* RLAppDelegate.swift */,
 				3D28A5DD213043EE0031AA6A /* RLMainViewController.swift */,
 				3D350482213466BE00B11184 /* RLCollectionViewCell.swift */,
+				CECE94EA213CAC9E002965F7 /* RLSearchViewController */,
 				3D28A5D7213031E50031AA6A /* RLDetailedViewController */,
+				CECE94F0213CAD6B002965F7 /* ConfigTableView */,
 				CE13055A21376C9500FAAB86 /* Presenter */,
 				3D28A5D0212FFCCC0031AA6A /* ModelGiphy */,
 				3D28A5CF212FFCB30031AA6A /* RLDownloader */,
 				3D28A5CE212FFCA50031AA6A /* RLJsonParser */,
 				CE13054D2137657B00FAAB86 /* CDManager */,
 				3D28A5D8213032A30031AA6A /* downloaderGifs-Bridging-Header.h */,
-				CE351D5621332E9E0016B2D5 /* Model */,
+				CECE9569213CBCAB002965F7 /* rss_reader_tut_byTests.m */,
 				3DF840CF212EC07B00E23A8F /* Main.storyboard */,
 				3DF840D2212EC07C00E23A8F /* Assets.xcassets */,
 				3DF840D4212EC07C00E23A8F /* LaunchScreen.storyboard */,
@@ -214,17 +215,21 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		CE351D5621332E9E0016B2D5 /* Model */ = {
+		CECE94EA213CAC9E002965F7 /* RLSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE1305572137698300FAAB86 /* RLMyStack.h */,
-				CE1305582137698300FAAB86 /* RLMyStack.m */,
-				3DF840DF212EEBE600E23A8F /* GiphyModel.h */,
-				3DF840E0212EEBE600E23A8F /* GiphyModel.m */,
-				CE351D5721332EB50016B2D5 /* Gif.h */,
-				CE351D5821332EB50016B2D5 /* Gif.m */,
+				CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */,
 			);
-			path = Model;
+			path = RLSearchViewController;
+			sourceTree = "<group>";
+		};
+		CECE94F0213CAD6B002965F7 /* ConfigTableView */ = {
+			isa = PBXGroup;
+			children = (
+				CECE94F9213CB650002965F7 /* RLConfigViewController.swift */,
+				CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */,
+			);
+			path = ConfigTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,27 +305,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE4B33A2138A595008B23BF /* RLGifModelMO+CoreDataClass.m in Sources */,
-				CE1305592137698300FAAB86 /* RLMyStack.m in Sources */,
 				3D28A5DE213043EE0031AA6A /* RLMainViewController.swift in Sources */,
+				CECE94FA213CB650002965F7 /* RLConfigViewController.swift in Sources */,
 				3D28A5CD212FFC2F0031AA6A /* RLJsonParser.m in Sources */,
 				CEE4B3372138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m in Sources */,
 				CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */,
 				CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */,
 				3D3504632133FF9700B11184 /* GIF+UIImageView.swift in Sources */,
-				CE351D5921332EB50016B2D5 /* Gif.m in Sources */,
-				3DF840E1212EEBE600E23A8F /* GiphyModel.m in Sources */,
 				3D28A5C9212FFADC0031AA6A /* RLDownloader.m in Sources */,
 				3D28A5E42130693D0031AA6A /* Presenter2.swift in Sources */,
+				CECE94FC213CB677002965F7 /* RLConfigTableViewCell.swift in Sources */,
 				CEE4B3382138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m in Sources */,
 				3D350483213466BE00B11184 /* RLCollectionViewCell.swift in Sources */,
 				CE13054C2137528F00FAAB86 /* Connectivity.m in Sources */,
 				CE13056F2137711F00FAAB86 /* downloaderGifs.xcdatamodeld in Sources */,
 				3D28A5E0213045F20031AA6A /* GiphyModel2.swift in Sources */,
 				CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */,
+				CECE94E9213C60FA002965F7 /* RLSearchViewController.swift in Sources */,
 				3D28A5E2213051C50031AA6A /* ModelService2.swift in Sources */,
 				CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */,
 				CEE4B33B2138A595008B23BF /* RLGifModelMO+CoreDataProperties.m in Sources */,
 				CEE4B3392138A595008B23BF /* RLPreviewGifMO+CoreDataProperties.m in Sources */,
+				CECE956A213CBCAC002965F7 /* rss_reader_tut_byTests.m in Sources */,
 				CEF594B32138351D00C0111B /* RLFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

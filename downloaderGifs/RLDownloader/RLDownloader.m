@@ -17,6 +17,7 @@
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil) { NSAssert(error, @"Error, look at fetchGifsDataWithUrl method"); }
         
         NSDictionary *dataDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         
@@ -33,6 +34,7 @@
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     
     NSURLSessionDownloadTask *downloadTask = [defaultSession downloadTaskWithURL:[NSURL URLWithString:strUrl] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil) { NSAssert(error, @"Error, look at fetchGifWithUrl method"); }
         
         NSURL *destinationUrl = [RLFileManager copyElementFrom:location to:NSCachesDirectory];
         NSData *data = [NSData dataWithContentsOfURL:destinationUrl];

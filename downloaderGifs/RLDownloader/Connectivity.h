@@ -13,5 +13,5 @@ typedef void(^NetworkCondition)(void);
 @interface Connectivity : NSObject
 
 + (BOOL)isNetworkAvailable;
-+ (void)networkConditionWith:(NetworkCondition)isConnected or:(NetworkCondition)isDisconnected;
++ (void)networkConditionIsConnected:(NetworkCondition)isConnected isDisconnected:(NetworkCondition)isDisconnected;
 @end

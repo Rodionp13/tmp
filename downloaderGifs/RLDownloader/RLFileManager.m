@@ -13,11 +13,15 @@
 + (NSURL *)copyElementFrom:(id)location to:(NSSearchPathDirectory)destination {
     NSFileManager *defaultManager = [NSFileManager defaultManager];
     
+    if(location == nil) { NSAssert(errno, @"Error, look at copyElementFrom method"); }
+    
     NSURL *locationUrl = (NSURL*)location;
     
     NSArray *urls = [defaultManager URLsForDirectory:destination inDomains:NSUserDomainMask];
     NSURL *cacheDirectory = [urls objectAtIndex:0];
     NSURL *originalUrl = [NSURL URLWithString:[locationUrl lastPathComponent]];
+    NSLog(@"ORIG %@ == LAST COMP %@", originalUrl, [originalUrl lastPathComponent]);
+    if(originalUrl == nil) { NSAssert(errno, @"Error, look at copyElementFrom method"); }
     NSURL *desctinationUrl = [cacheDirectory URLByAppendingPathComponent:[originalUrl lastPathComponent]];
     NSError *error;
     [defaultManager copyItemAtURL:location toURL:desctinationUrl error:&error];

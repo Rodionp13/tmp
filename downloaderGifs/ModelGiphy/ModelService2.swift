@@ -7,10 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 enum QueryType: Int {
     case trending = 0
     case searched
+}
+
+enum StoreTypre: Int {
+    case trendingGifs = 0
+    case searchedGifs
 }
 
 class ModelService2 {
@@ -19,16 +25,21 @@ class ModelService2 {
     private var gifs = Array<GiphyModel2>()
     private var searchedGifs = Array<GiphyModel2>()
     private var offset: Int = 0
+    private var configObjArr = Array<GiphyModel2>()
     
     
-    public func startFetchingProcess(with url:String, and complition:@escaping()->Void) -> Void {
+    public func startFetchingProcess(with url:String, type:StoreTypre, and complition:@escaping()->Void) -> Void {
         let connection = Connectivity.isNetworkAvailable()
         if(connection) {
             self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
                 
                 self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
                     let gifs = gifObjects as! [GiphyModel2]
-                    self?.storeGifs(gifs)
+                    if(type == .trendingGifs) {
+                        self?.storeGifs(gifs)
+                    } else {
+                        self?.storeGifsInSearchArr(gifs)
+                    }
                     complition();
                 })
             }
@@ -39,9 +50,9 @@ class ModelService2 {
     //.......................................................TEST..................................................................//
     //.........................................................................................................................//
     
-    public func fetchDownsizedGif(with indexPath: IndexPath, complitionBlock:@escaping (Data)->Void)   -> Void {
-        
-        guard let gif = self.getGif(withIndexPath: indexPath), let downsized_gif = gif.downsized_medium else { return }
+    public func fetchDownsizedGif(with indexPath: IndexPath, type:StoreTypre, complitionBlock:@escaping (Data)->Void)   -> Void {
+           let temp = self.getGif(withIndexPath: indexPath, withType: type)
+        guard let gif = temp, let downsized_gif = gif.downsized_medium else { return }
         let connection = Connectivity.isNetworkAvailable()
         if(connection) {
             self.startFetchingGif(with: downsized_gif.url) { (data, locationUrl) in
@@ -52,11 +63,18 @@ class ModelService2 {
         }
     }
     
-    public func fetchSmallGif(with indexPath: IndexPath, queryTypre: QueryType?, topic: String?, complitionBlock:@escaping (Data?)->Void, second complition2:@escaping ((Array<IndexPath>)->Void))  -> Void {
+    public func fetchSmallGif(with indexPath: IndexPath, queryTypre: QueryType?, storeType: StoreTypre, topic: String?, complitionBlock:@escaping (Data?)->Void, second complition2:@escaping ((Array<IndexPath>)->Void))  -> Void {
+        
+        let temp: GiphyModel2? = self.getGif(withIndexPath: indexPath, withType: storeType)
+        var count: Int
+        if(storeType == .trendingGifs) {
+            count = self.gifsCount() - 1
+        } else {
+            count = self.searchedGifsCount() - 1
+        }
         
         let connection: Bool = Connectivity.isNetworkAvailable()
-        guard let gif = self.getGif(withIndexPath: indexPath), let preview_gif = gif.preview_gif else { return }
-        let count = self.gifsCount() - 1
+        guard let gif = temp, let preview_gif = gif.preview_gif else { return }
         
         if(connection) {
             if(indexPath.row != count) {
@@ -71,7 +89,7 @@ class ModelService2 {
                     }
                 }
             } else {
-                self.loadAdditionalSmallGifs2(with: indexPath, queryType: queryTypre, topic: topic) { (indises) in
+                self.loadAdditionalSmallGifs2(with: indexPath, queryType: queryTypre, storeType: storeType, topic: topic) { (indises) in
                     complition2(indises);
                 }
             }
@@ -81,27 +99,30 @@ class ModelService2 {
     
     private func startFetchingGif(with url: String, and complition:@escaping (Data, URL)->Void) -> Void {
         self.downloader.fetchGif(withUrl: url) { (data: Data?, locationUrl: URL?) in
-            
             guard let data = data, let locationUrl = locationUrl else { return }
             complition(data,locationUrl);
         }
     }
     
-    private func loadAdditionalSmallGifs2(with indexPath: IndexPath, queryType:QueryType?, topic: String?, and complition:@escaping (([IndexPath])->Void)) -> Void {
-//            self.offset += 25
-//            let url: String = "\(kAdditionalGifsUrl)"+String(self.offset)
+    private func loadAdditionalSmallGifs2(with indexPath: IndexPath, queryType:QueryType?, storeType:StoreTypre , topic: String?, and complition:@escaping (([IndexPath])->Void)) -> Void {
+        
         let url: String = self.getQueryString(queryType: queryType, topicStr: topic)
-            self.startFetchingProcess(with: url) { [weak self] in
+        self.startFetchingProcess(with: url, type: storeType) { [weak self] in
                 var indises = [IndexPath]()
-                
-                for idx in (self?.gifsCount())!-25..<(self?.gifsCount())! {
+            var count: Int
+            if(storeType == .trendingGifs) {
+                count = (self?.gifsCount())!
+            } else {
+                count = (self?.searchedGifsCount())!
+            }
+                for idx in count-25..<count {
                     indises.append(IndexPath(item: idx, section: 0))
             }
                 complition(indises);
         }
     }
     
-    private func getQueryString(queryType :QueryType?, topicStr: String?) -> String {
+    func getQueryString(queryType :QueryType?, topicStr: String?) -> String {
         guard let queryType = queryType else { return "" }
         switch queryType.rawValue {
         case 0:
@@ -109,20 +130,28 @@ class ModelService2 {
             return "\(kAdditionalGifsUrl)"+String(self.offset)
         case 1:
             self.offset += 25
-            return "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=\(topicStr)&offset=25"
+            let resultStr = self.handleTopicString(topic: topicStr!)
+            return "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+String(resultStr)+"&offset="+String(self.offset)
         default:
             return ""
         }
     }
     
-    func searchForGifsWith(topic topic: String) -> Void {
-        
+    private func handleTopicString(topic: String) -> String {
+        return String(topic.map({$0 == " " ? "+" : $0})).lowercased()
     }
     
     
     //Accessory methods to Sourse gifs
-    public func getGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
-        return gifs[indexPath.row]
+    public func getGif(withIndexPath indexPath: IndexPath, withType: StoreTypre) -> GiphyModel2? {
+        switch withType.rawValue {
+        case 0:
+            return self.gifs[indexPath.row]
+        case 1:
+            return self.searchedGifs[indexPath.row]
+        default:
+            return nil
+        }
     }
     
     public func storeGifs(_ gifs: Array<GiphyModel2>) {
@@ -132,8 +161,38 @@ class ModelService2 {
     public func gifsCount() -> Int {
         return self.gifs.count
     }
+   
+    
+    public func getSearchedGif(withIndexPath indexPath: IndexPath) -> GiphyModel2? {
+        return searchedGifs[indexPath.row]
+    }
+    
+    public func storeGifsInSearchArr(_ gifs: Array<GiphyModel2>) {
+        self.searchedGifs.append(contentsOf: gifs)
+    }
+    
+    public func searchedGifsCount() -> Int {
+        return self.searchedGifs.count
+    }
     
     
-    
-    
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
