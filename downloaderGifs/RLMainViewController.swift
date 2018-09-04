@@ -97,15 +97,6 @@ class RLMainViewController: UIViewController {
             cell.activityIndicator.isHidden = true
             }
             guard let data = data else { return }
-//                guard let originalName = self?.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs)?.preview_gif?.originalName else { return }
-//                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
-//                let data = try? Data.init(contentsOf: locationUrl!)
-//                cell.imgView.image = UIImage.gif(data: data!)
-//                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-//                cell.activityIndicator.stopAnimating()
-//                cell.activityIndicator.isHidden = true
-//                return
-//            }
             cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
             cell.imgView.image = UIImage.gif(data: data)
         }
@@ -117,7 +108,7 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.presenter.modelService.gifsCount()
+        let count = self.presenter.modelService.gifsCount(in: StoreTypre.trendingGifs)
         return count
     }
 
@@ -164,10 +155,7 @@ extension RLMainViewController: PresenterDelegate {
     func loadingDidEnd(_ indexPath: IndexPath) {}
     
     func connectionDownAlert() {
-        let alert: UIAlertController = UIAlertController(title: "Warning", message: "There'is no internet connection and no data in store!!!\nPlease switch on connection\nGIFs took from local store", preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Okey", style: UIAlertActionStyle.default) { (action) in }
-        alert.addAction(action)
-        self.present(alert, animated: true) { print("alert became") }
+        self.alert()
     }
         
 }
@@ -192,7 +180,6 @@ extension RLMainViewController: UISearchBarDelegate {
             self.searchBar.resignFirstResponder()
             let searchVC = RLSearchViewController.init()
             searchVC.topicString = self.topicStringToPass
-            searchVC.presenter = self.presenter
             self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
@@ -229,6 +216,13 @@ extension UIViewController {
         tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func alert() {
+        let alert: UIAlertController = UIAlertController(title: "Warning", message: "There'is no internet connection and no data in store!!!\nPlease switch on connection\nGIFs took from local store", preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Okey", style: UIAlertActionStyle.default) { (action) in }
+        alert.addAction(action)
+        self.present(alert, animated: true) { print("alert became") }
     }
 
 }

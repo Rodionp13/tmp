@@ -14,16 +14,9 @@ import Foundation
     @objc optional func loadingDidEnd(_ indexPath: IndexPath) -> Void;
     @objc optional func updateCollectionAfterLoading(indisesToUpdate indises:Array<IndexPath>) -> Void;
     @objc optional func connectionDownAlert() -> Void;
-}
-
-@objc protocol DetailedPresenterDelegate: class {
-    func willStartAddingNewRecordToDb() -> Void;
-    func didEndAddingNewRecordToDb() -> Void;
-    @objc optional func connectionDownAlert() -> Void;
-}
-
-@objc protocol SearchPresenterDelegate: class {
-    @objc optional func updateCollectionAfterLoading(indisesToUpdate indises:Array<IndexPath>) -> Void;
+    
+    @objc optional func willStartAddingNewRecordToDb() -> Void;
+    @objc optional func didEndAddingNewRecordToDb() -> Void;
 }
 
 
@@ -31,8 +24,6 @@ class Presenter2 {
     let modelService: ModelService2 = ModelService2.init(downloader: RLDownloader.init(), jSonParser: RLJsonParser.init())
     private let cdManager: RLCoreDataManager = RLCoreDataManager.init();
     weak var delegate: PresenterDelegate?
-    weak var delegate2: DetailedPresenterDelegate?
-    weak var delegate3: SearchPresenterDelegate?
     
     
     public func startFetchingProcess(with url:String, storeType: StoreTypre, and complition:@escaping(Array<Any>?)->Void)   -> Void {
@@ -45,7 +36,7 @@ class Presenter2 {
                 self?.cdManager.loadDataFromDB(with: nil, andDescriptor: nil) { [weak self] (queryRes) in
                     guard let queryRes = queryRes else { return }
                     
-                    self?.modelService.storeGifs(queryRes as! Array<GiphyModel2>)
+                    self?.modelService.storeGifs(queryRes as! Array<GiphyModel2>, in: StoreTypre.trendingGifs)
                     complition(queryRes);
                 }
         })
@@ -59,7 +50,7 @@ class Presenter2 {
                     if(storeType == .trendingGifs) {
                     self?.delegate?.updateCollectionAfterLoading!(indisesToUpdate: indises);
                     } else {
-                        self?.delegate3?.updateCollectionAfterLoading!(indisesToUpdate: indises);
+                        self?.delegate?.updateCollectionAfterLoading!(indisesToUpdate: indises);
                     }
             }
         }
@@ -74,7 +65,7 @@ class Presenter2 {
         } else {
             
             complitionBlock(nil)
-                self.delegate2?.connectionDownAlert!()
+                self.delegate?.connectionDownAlert!()
         }
         
     }
@@ -85,50 +76,14 @@ class Presenter2 {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //Core data methods
     public func addNewRecordToDb(gifObj: [NSString:Any])  -> Void {
-        self.delegate2?.willStartAddingNewRecordToDb()
+        self.delegate?.willStartAddingNewRecordToDb!()
         
         self.cdManager.addNewRecords(toDB: gifObj) { [weak self] in
-            self?.delegate2?.didEndAddingNewRecordToDb()
+            self?.delegate?.didEndAddingNewRecordToDb!()
         }
     }
-    
-//    private func queryToDb(with indexPath: IndexPath, and complition:@escaping((Data)->Void))   -> Void {
-//        guard let gif = self.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs), let title = gif.title, let rating = gif.rating else { return }
-//        
-//        let predicate: NSPredicate = NSPredicate(format: "title = %@ AND rating = %@", argumentArray: [title, rating])
-//        self.cdManager.loadDataFromDB(with: predicate, andDescriptor: nil) { (dbResult:[Any]?) in
-//            guard let dbResult = dbResult else { return }
-//            if(dbResult.count != 0) {
-//            let gif = dbResult.first as! GiphyModel2
-//                let originalName = gif.downsized_medium?.originalName!
-//                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
-//                let data = try? Data.init(contentsOf: locationUrl!)
-//                complition(data!)
-//            }
-//        }
-//    }
 }
 
 

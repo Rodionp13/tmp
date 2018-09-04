@@ -33,7 +33,9 @@ class RLAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        self.presenter.modelService.saveConfigToDb()
+        if let configs = self.presenter.modelService.getConfigArr() {
+            self.presenter.modelService.saveConfigToDb(configArr: configs)
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -47,6 +49,7 @@ class RLAppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+//        self.presenter.modelService.saveConfigToDb()
         self.saveContext()
     }
 

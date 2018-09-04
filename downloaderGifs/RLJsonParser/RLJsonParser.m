@@ -8,7 +8,6 @@
 
 #import "RLJsonParser.h"
 #import "ConstantsForParsing.h"
-//#import "GiphyModel.h"
 #import "downloaderGifs-Swift.h"
 
 
@@ -20,8 +19,8 @@ typedef BOOL(^CheckBlock)(NSArray*);
 - (void)parseFetchedJsonDataWithDict:(NSDictionary *)fetchedJsonData withComplition:(void(^)(NSArray*gifObjects))complition {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
         NSArray *tempData;
-        if([fetchedJsonData objectForKey:@"data"] != nil) {tempData = [fetchedJsonData objectForKey:@"data"];} else {NSLog(@"Wrong, see parseFetchedJsonDataWithDict:");}
-        NSMutableArray *gifObjects = [NSMutableArray array];
+        NSMutableArray *gifObjects;
+        if([fetchedJsonData objectForKey:@"data"] != nil) {tempData = [fetchedJsonData objectForKey:@"data"]; gifObjects = [NSMutableArray array];}
         
         for(NSDictionary* dataDict in tempData) {
             GiphyModel2 *gif = [[GiphyModel2 alloc] init];
@@ -47,14 +46,5 @@ typedef BOOL(^CheckBlock)(NSArray*);
     });
     
 }
-
-
-
-//        for(GiphyModel2 *gif in gifObjects) {
-//            NSLog(@"===%@\n%@\n%@\n%@\n%@\n%f\n%f", gif.title,gif.rating,gif.import_datetime,gif.trending_datetime,gif.fixed_width_small.url,gif.fixed_width_small.width,gif.fixed_width_small.height);
-//        }
-
-
-
 
 @end

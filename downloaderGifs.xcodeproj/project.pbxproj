@@ -30,6 +30,8 @@
 		CED70FFD213D3B86009EDD86 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED70FFC213D3B86009EDD86 /* ConfigModel.swift */; };
 		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
 		CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB75062136131B00528CFF /* RLAppDelegate.swift */; };
+		CEE40924213DF00300F8D4EA /* RLJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */; };
+		CEE40929213DF7E900F8D4EA /* ModelServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40925213DF7DF00F8D4EA /* ModelServiceTest.swift */; };
 		CEE4B3362138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */; };
 		CEE4B3372138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B32D2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.m */; };
 		CEE4B3382138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B3302138A595008B23BF /* RLPreviewGifMO+CoreDataClass.m */; };
@@ -84,6 +86,8 @@
 		CED70FFC213D3B86009EDD86 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
 		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
 		CEDB75062136131B00528CFF /* RLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLAppDelegate.swift; sourceTree = "<group>"; };
+		CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLJsonParserTest.m; sourceTree = "<group>"; };
+		CEE40925213DF7DF00F8D4EA /* ModelServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelServiceTest.swift; sourceTree = "<group>"; };
 		CEE4B32A2138A595008B23BF /* RLDownsizedGifMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataProperties.h"; sourceTree = "<group>"; };
 		CEE4B32B2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLDownsizedGifMO+CoreDataClass.h"; sourceTree = "<group>"; };
 		CEE4B32C2138A595008B23BF /* RLDownsizedGifMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RLDownsizedGifMO+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -262,7 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */,
+				CEE40925213DF7DF00F8D4EA /* ModelServiceTest.swift */,
 				CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */,
+				CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */,
 				CED70FF3213D1B3B009EDD86 /* Info.plist */,
 				CED70FF9213D1E35009EDD86 /* downloaderGifsTests-Bridging-Header.h */,
 			);
@@ -412,8 +418,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE40924213DF00300F8D4EA /* RLJsonParserTest.m in Sources */,
 				CED70FFB213D1E35009EDD86 /* RlDownloaderTests.m in Sources */,
 				CED70FF2213D1B3B009EDD86 /* RLMainVCTests.swift in Sources */,
+				CEE40929213DF7E900F8D4EA /* ModelServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

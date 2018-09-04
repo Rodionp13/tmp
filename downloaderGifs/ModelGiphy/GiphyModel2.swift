@@ -30,25 +30,6 @@ import Foundation
         super.init()
     }
     
-//    func encode(with aCoder: NSCoder) {
-//        aCoder.encode(title, forKey: "title")
-//        aCoder.encode(rating, forKey: "rating")
-//        aCoder.encode(import_datetime, forKey: "import_datetime")
-//        aCoder.encode(trending_datetime, forKey: "trending_datetime")
-//        aCoder.encode(preview_gif, forKey: "preview_gif")
-//        aCoder.encode(downsized_medium, forKey: "downsized_medium")
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        title = aDecoder.decodeObject(forKey: "title") as? String
-//        rating = aDecoder.decodeObject(forKey: "rating") as? String
-//        import_datetime = aDecoder.decodeObject(forKey: "import_datetime") as? String
-//        trending_datetime = aDecoder.decodeObject(forKey: "trending_datetime") as? String
-//        preview_gif = aDecoder.decodeObject(forKey: "preview_gif") as? Gif
-//        downsized_medium = aDecoder.decodeObject(forKey: "downsized_medium") as? Gif
-    //super.ini()
-//    }
-    
 }
 
 @objcMembers class Gif: NSObject {
@@ -65,20 +46,7 @@ import Foundation
         self.height = height
         self.size = size
     }
-//
-//    func encode(with aCoder: NSCoder) {
-//        aCoder.encode(originalName, forKey: "originalName")
-//        aCoder.encode(url, forKey: "url")
-//        aCoder.encode
-//        aCoder.encode(originalName, forKey: "originalName")
-//        aCoder.encode(originalName, forKey: "originalName")
-    
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-    //super.ini()
-//        <#code#>
-//    }
+
 }
 
 

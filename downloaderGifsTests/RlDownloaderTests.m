@@ -75,7 +75,6 @@ typedef void (^Complition)(NSData*, NSURLResponse*, NSError*);
 - (void)setUp {
     [super setUp];
     self.downloader = [[RLDownloader alloc] init];
-    self.sessionMock = [[URLSessionMock alloc] init];
 }
 
 - (void)tearDown {
@@ -84,18 +83,34 @@ typedef void (^Complition)(NSData*, NSURLResponse*, NSError*);
 }
 
 - (void)test_fetchGifsDataWithUrl_Success {
-    unsigned char bytes[] = { 0x0F };
-    NSData *data = [NSData dataWithBytes:bytes length:1];
-    NSDictionary *dict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    self.sessionMock.data = data;
-    [self.downloader fetchGifsDataWithUrl:@"" andComplition:^(NSDictionary *dataDict) {
-        XCTAssertNil(dataDict, @"Data dict should not be nil");
+    XCTestExpectation *expactation = [self expectationWithDescription:@"Time out"];
+
+    [self.downloader fetchGifsDataWithUrl:@"https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=Life&offset=0&rating=y" andComplition:^(NSDictionary *dataDict) {
+        XCTAssertNotNil(dataDict, @"Data dict should not be nil");
+        [expactation fulfill];
+    }];
+
+    [self waitForExpectationsWithTimeout:3.f handler:^(NSError * _Nullable error) {
+        if(error != nil) {
+            NSLog(@"There is an error!");
+        }
     }];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)test_fetchGifWithUrl_Success {
+    XCTestExpectation *expactation = [self expectationWithDescription:@"Time out"];
+    
+    [self.downloader fetchGifWithUrl:@"https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=Life&offset=0&rating=y" andComplition:^(NSData *data, NSURL *locationUrl) {
+        XCTAssertNotNil(data, @"Data should not be nil");
+        XCTAssertNotNil(locationUrl, @"Location should not be nil");
+        [expactation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:1.5f handler:^(NSError * _Nullable error) {
+        if(error != nil) {
+            NSLog(@"There is an error!");
+        }
+    }];
 }
 
 @end

@@ -40,25 +40,29 @@ class ModelService2 {
         
         if let archiveItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveUrl.path!) as? [ConfigModel] {
                 self.configObjArr.append(contentsOf: archiveItems)
-            print(self.configObjArr)
-            print(self.configObjArr.count)
         } else {
-            configObjArr = [ConfigModel.init(rating: "y"), ConfigModel.init(rating: "p"), ConfigModel.init(rating: "pg")]
-            print(self.configObjArr)
+            configObjArr = [ConfigModel.init(rating: "y"), ConfigModel.init(rating: "g"), ConfigModel.init(rating: "pg")]
         }
     }
+    
+    public func saveConfigToDb(configArr: Array<ConfigModel>) -> Bool {
+        let success = NSKeyedArchiver.archiveRootObject(configArr, toFile: self.itemArchiveUrl.path!)
+        return success
+    }
+    
+    //=======================================================================================================================//
     
     public func startFetchingProcess(with url:String, type:StoreTypre, and complition:@escaping()->Void) -> Void {
         let connection = Connectivity.isNetworkAvailable()
         if(connection) {
-            self.downloader.fetchGifsData(withUrl: url) { (dataDict:[AnyHashable:Any]?) in
+            self.downloader.fetchGifsData(withUrl: url) { [weak self] (dataDict:[AnyHashable:Any]?) in
                 
-                self.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
+                self?.jSonParser.parseFetchedJsonData(withDict: dataDict!, withComplition: { [weak self] (gifObjects:[Any]?) in
                     let gifs = gifObjects as! [GiphyModel2]
                     if(type == .trendingGifs) {
-                        self?.storeGifs(gifs)
+                        self?.storeGifs(gifs, in: StoreTypre.trendingGifs)
                     } else {
-                        self?.storeGifsInSearchArr(gifs)
+                        self?.storeGifs(gifs, in: StoreTypre.searchedGifs)
                     }
                     complition();
                 })
@@ -66,9 +70,6 @@ class ModelService2 {
         }
     }
     
-    //.........................................................................................................................//
-    //.......................................................TEST..................................................................//
-    //.........................................................................................................................//
     
     public func fetchDownsizedGif(with indexPath: IndexPath, type:StoreTypre, complitionBlock:@escaping (Data)->Void)   -> Void {
            let temp = self.getGif(withIndexPath: indexPath, withType: type)
@@ -76,9 +77,8 @@ class ModelService2 {
         let connection = Connectivity.isNetworkAvailable()
         if(connection) {
             self.startFetchingGif(with: downsized_gif.url) { (data, locationUrl) in
-//                print(locationUrl);
                 downsized_gif.originalName = locationUrl.lastPathComponent
-                complitionBlock(data);//                print(locationUrl);
+                complitionBlock(data);
             }
         }
     }
@@ -86,12 +86,12 @@ class ModelService2 {
     public func fetchSmallGif(with indexPath: IndexPath, queryTypre: QueryType?, storeType: StoreTypre, topic: String?, complitionBlock:@escaping (Data?)->Void, second complition2:@escaping ((Array<IndexPath>)->Void))  -> Void {
         
         let temp: GiphyModel2? = self.getGif(withIndexPath: indexPath, withType: storeType)
-        var count: Int
-        if(storeType == .trendingGifs) {
-            count = self.gifsCount() - 1
-        } else {
-            count = self.searchedGifsCount() - 1
-        }
+        let count: Int = self.gifsCount(in: storeType)
+//        if(storeType == .trendingGifs) {
+//            count = self.gifsCount(in: St)
+//        } else {
+//            count = self.searchedGifsCount() - 1
+//        }
         
         let connection: Bool = Connectivity.isNetworkAvailable()
         guard let gif = temp, let preview_gif = gif.preview_gif else { return }
@@ -129,12 +129,12 @@ class ModelService2 {
         let url: String = self.getQueryString(queryType: queryType, topicStr: topic)
         self.startFetchingProcess(with: url, type: storeType) { [weak self] in
                 var indises = [IndexPath]()
-            var count: Int
-            if(storeType == .trendingGifs) {
-                count = (self?.gifsCount())!
-            } else {
-                count = (self?.searchedGifsCount())!
-            }
+            let count: Int = (self?.gifsCount(in: storeType))!
+//            if(storeType == .trendingGifs) {
+//                count = (self?.gifsCount(in: StoreTypre.trendingGifs))!
+//            } else {
+//                count = (self?.gifsCount(in: StoreTypre.searchedGifs))!
+//            }
                 for idx in count-25..<count {
                     indises.append(IndexPath(item: idx, section: 0))
             }
@@ -142,7 +142,7 @@ class ModelService2 {
         }
     }
     
-    func getQueryString(queryType :QueryType?, topicStr: String?) -> String {
+    public func getQueryString(queryType :QueryType?, topicStr: String?) -> String {
         guard let queryType = queryType else { return "" }
         switch queryType.rawValue {
         case 0:
@@ -150,14 +150,21 @@ class ModelService2 {
             return "\(kAdditionalGifsUrl)"+String(self.offset)
         case 1:
             self.offset += 25
+            let rating = self.configObjArr.filter { (config) in
+                return config.isSelected == true
+                }.first?.rating
             let resultStr = self.handleTopicString(topic: topicStr!)
-            return "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+String(resultStr)+"&offset="+String(self.offset)
+            
+            guard let rate = rating else { return "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=\(resultStr)&offset=\(String(self.offset))&rating=y" }
+            
+            return "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=\(resultStr)&offset=\(String(self.offset))&rating=\(rate)"
+            
         default:
             return ""
         }
     }
     
-    public func handleTopicString(topic: String) -> String {
+    private func handleTopicString(topic: String) -> String {
         return String(topic.map({$0 == " " ? "+" : $0})).lowercased()
     }
     
@@ -174,12 +181,28 @@ class ModelService2 {
         }
     }
     
-    public func storeGifs(_ gifs: Array<GiphyModel2>) {
-        self.gifs.append(contentsOf: gifs)
+    public func storeGifs(_ gifs: Array<GiphyModel2>, in store: StoreTypre) -> Void {
+        switch store.rawValue {
+        case 0:
+            self.gifs.append(contentsOf: gifs)
+            break;
+        case 1:
+            self.searchedGifs.append(contentsOf: gifs)
+            break;
+        default: break
+        }
+        
     }
     
-    public func gifsCount() -> Int {
-        return self.gifs.count
+    public func gifsCount(in store: StoreTypre) -> Int {
+        switch store.rawValue {
+        case 0:
+            return self.gifs.count
+        case 1:
+            return self.searchedGifs.count
+        default:
+            return 0;
+        }
     }
    
     
@@ -187,13 +210,13 @@ class ModelService2 {
         return searchedGifs[indexPath.row]
     }
     
-    public func storeGifsInSearchArr(_ gifs: Array<GiphyModel2>) {
-        self.searchedGifs.append(contentsOf: gifs)
-    }
+//    public func storeGifsInSearchArr(_ gifs: Array<GiphyModel2>) {
+//        self.searchedGifs.append(contentsOf: gifs)
+//    }
     
-    public func searchedGifsCount() -> Int {
-        return self.searchedGifs.count
-    }
+//    public func searchedGifsCount() -> Int {
+//        return self.searchedGifs.count
+//    }
     
     
     
@@ -205,21 +228,12 @@ class ModelService2 {
         return self.configObjArr[indexPath.row]
     }
     
-    public func getConfigArr() -> [ConfigModel] {
+    public func getConfigArr() -> Array<ConfigModel>? {
         return self.configObjArr
     }
     
-    public func configArrCount() -> Int {
+    public func getConfigArrCount() -> Int {
         return self.configObjArr.count
-    }
-    
-    func saveConfigToDb() -> Void {
-        let success = NSKeyedArchiver.archiveRootObject(self.configObjArr, toFile: itemArchiveUrl.path!)
-        if(success) {
-            print("Saved data Successfuly")
-        } else {
-            print("Something's wrong!!! data are not saved")
-        }
     }
     
     

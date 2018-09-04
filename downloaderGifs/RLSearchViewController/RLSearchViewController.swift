@@ -10,7 +10,10 @@ import UIKit
 
 class RLSearchViewController: UIViewController {
     
-    var presenter: Presenter2!
+    let presenter: Presenter2 = {
+        let pr = (UIApplication.shared.delegate as! RLAppDelegate).presenter
+        return pr!
+    }()
     var topicString: String!
     var collectionView: UICollectionView!
     var searchBar: UISearchBar!
@@ -28,12 +31,11 @@ class RLSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.delegate = self
         self.setUpSearchBar()
         self.setupCollectionView()
         self.presenter.modelService.removeAllItims()
         self.title = self.topicString
-        self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
-        self.presenter.delegate3 = self
         self.presenter.startFetchingProcess(with: self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
             self?.collectionView.reloadData()
         }
@@ -43,7 +45,6 @@ class RLSearchViewController: UIViewController {
         self.searchBar = UISearchBar(frame: .zero)
         self.searchBar.delegate = self
         self.view.addSubview(self.searchBar)
-//        self.navigationItem.titleView = searchBar
         self.setUpConstarints(to: self.searchBar)
     }
     
@@ -93,7 +94,7 @@ extension RLSearchViewController: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.presenter.modelService.searchedGifsCount()
+        let count = self.presenter.modelService.gifsCount(in: StoreTypre.searchedGifs)
         return count
     }
     
@@ -107,7 +108,6 @@ extension RLSearchViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailedVC = RLDetailedViewController.init(nibName: "RLDetailedViewController", bundle: nil)
         detailedVC.indexPath = indexPath
-        //        detailedVC.gif = self.presenter.modelService.getGif(withIndexPath: indexPath)
         detailedVC.presenter = self.presenter
         detailedVC.storeType = StoreTypre.searchedGifs
         if(self.presenter.modelService.getSearchedGif(withIndexPath: indexPath) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
@@ -131,7 +131,7 @@ extension RLSearchViewController: UICollectionViewDelegate, UICollectionViewData
     
 }
 
-extension RLSearchViewController: SearchPresenterDelegate {
+extension RLSearchViewController: PresenterDelegate {
     func updateCollectionAfterLoading(indisesToUpdate indises: Array<IndexPath>) {
         self.collectionView.reloadData()
     }
@@ -156,12 +156,13 @@ extension RLSearchViewController: UISearchBarDelegate {
         self.title = self.topicString
         self.collectionView.reloadData()
         self.presenter.modelService.removeAllItims()
-        self.presenter.modelService.getConfigArr().map { [weak self] (config) in
-            if(config.isSelected == true) {
-                self?.presenter.startFetchingProcess(with: "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+(self?.topicString)!+"&offset=0"+"&rating=\(config.rating)", storeType: .searchedGifs) { [weak self] (nil) in
-                    self?.collectionView.reloadData()
-                }
-            }
+        
+//        let topicStr = self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString)
+//        let config = self.presenter.modelService.getConfigArr().filter { $0.isSelected == true }.first
+//        if let config = config {
+            self.presenter.startFetchingProcess(with: self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
+                self?.collectionView.reloadData()
+//            }
         }
     }
     

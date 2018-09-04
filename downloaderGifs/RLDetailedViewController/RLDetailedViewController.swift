@@ -38,7 +38,7 @@ class RLDetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
-        self.presenter.delegate2 = self
+        self.presenter.delegate = self
         self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!, withType: self.storeType)
         
         self.downloadIndicator.isHidden = true
@@ -112,9 +112,6 @@ class RLDetailedViewController: UIViewController {
     }
     
     private func prepateGifDataToPass(with gif:GiphyModel2) -> Dictionary<NSString,[NSString:Any]>? {
-//        print("GIF\n\(gif.downsized_medium?.originalName)")
-//        print("GIF\n\(gif.description)")
-//        print("GIF FROM METH\n\((self.presenter.modelService.getGif(withIndexPath: self.indexPath!))?.preview_gif?.originalName!)")
         guard let prev = gif.preview_gif, let down = gif.downsized_medium else { return Dictionary<NSString,[NSString:Any]>() }
         let previewGif:[NSString:Any] = ["originalName":prev.originalName!,"width":prev.width,"height":prev.height,"url":prev.url,"size":prev.size]
         let downsizedGif:[NSString:Any] = ["originalName":down.originalName!,"width":down.width,"height":down.height,"url":down.url,"size":down.size]
@@ -139,7 +136,7 @@ class RLDetailedViewController: UIViewController {
 
 }
 
-extension RLDetailedViewController: DetailedPresenterDelegate {
+extension RLDetailedViewController: PresenterDelegate {
 
     func willStartAddingNewRecordToDb() {
         self.downloadIndicator.startAnimating()
@@ -160,8 +157,9 @@ extension RLDetailedViewController: DetailedPresenterDelegate {
         }
     }
     
-    func connectionDownAlert() { print("connection is down!") }
-
+    func connectionDownAlert() {
+        self.alert()
+    }
 }
 
 
