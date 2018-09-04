@@ -31,7 +31,6 @@ class RLMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
-        self.presenter.delegate = self
         self.title = "Gify search"
         self.setUpSearchBar()
         self.setupCollectionView()
@@ -49,6 +48,7 @@ class RLMainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.searchBar.text = ""
+        self.presenter.delegate = self
     }
     
     private func setUpSearchBar() {
@@ -108,7 +108,7 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.presenter.modelService.gifsCount(in: StoreTypre.trendingGifs)
+        let count = self.presenter.gifsCount(in: StoreTypre.trendingGifs)
         return count
     }
 
@@ -123,12 +123,12 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailedVC = RLDetailedViewController.init(nibName: "RLDetailedViewController", bundle: nil)
         detailedVC.indexPath = indexPath
         detailedVC.storeType = StoreTypre.trendingGifs
-        if(self.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
+        if(self.presenter.getGif(withIndexPath: indexPath, storeType: .trendingGifs) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let gif = self.presenter.modelService.getGif(withIndexPath: indexPath, withType: .trendingGifs) {
+        if let gif = self.presenter.getGif(withIndexPath: indexPath, storeType: .trendingGifs) {
             let height: Double = {
                 let h = (gif.preview_gif?.height)!
                 if(h > 180) {
@@ -150,9 +150,6 @@ extension RLMainViewController: PresenterDelegate {
         self.collectionView.insertItems(at: indises)
         self.collectionView.reloadItems(at: indises)
     }
-    
-    func loadingDidStart(_ indexPath: IndexPath) {}
-    func loadingDidEnd(_ indexPath: IndexPath) {}
     
     func connectionDownAlert() {
         self.alert()

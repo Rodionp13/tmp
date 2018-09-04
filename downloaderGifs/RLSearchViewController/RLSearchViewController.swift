@@ -31,14 +31,19 @@ class RLSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.delegate = self
+//        self.presenter.delegate = self
         self.setUpSearchBar()
         self.setupCollectionView()
-        self.presenter.modelService.removeAllItims()
+        self.presenter.removeAllItims()
         self.title = self.topicString
-        self.presenter.startFetchingProcess(with: self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
+        self.presenter.startFetchingProcess(with: self.presenter.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
             self?.collectionView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter.delegate = self
     }
     
     private func setUpSearchBar() {
@@ -66,27 +71,16 @@ class RLSearchViewController: UIViewController {
         cell.activityIndicator.isHidden = false
         let connection = Connectivity.isNetworkAvailable()
         
-        self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.searched, storeType: .searchedGifs, topic: self.topicString) { [weak self] (data:Data?) in
+        self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.searched, storeType: .searchedGifs, topic: self.topicString) { (data:Data?) in
             if(connection) {
                 cell.activityIndicator.stopAnimating()
                 cell.activityIndicator.isHidden = true
             }
-            guard let data = data else {
-                guard let originalName = self?.presenter.modelService.getSearchedGif(withIndexPath: indexPath)?.preview_gif?.originalName else { return }
-                let locationUrl = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
-                let data = try? Data.init(contentsOf: locationUrl!)
-                cell.imgView.image = UIImage.gif(data: data!)
+            guard let data = data else { return }
+                cell.imgView.image = UIImage.gif(data: data)
                 cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-                cell.activityIndicator.stopAnimating()
-                cell.activityIndicator.isHidden = true
-                return
             }
-            cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-            cell.imgView.image = UIImage.gif(data: data)
-        }
     }
-    
-    
     
 }
 
@@ -94,7 +88,7 @@ extension RLSearchViewController: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.presenter.modelService.gifsCount(in: StoreTypre.searchedGifs)
+        let count = self.presenter.gifsCount(in: StoreTypre.searchedGifs)
         return count
     }
     
@@ -110,12 +104,13 @@ extension RLSearchViewController: UICollectionViewDelegate, UICollectionViewData
         detailedVC.indexPath = indexPath
         detailedVC.presenter = self.presenter
         detailedVC.storeType = StoreTypre.searchedGifs
-        if(self.presenter.modelService.getSearchedGif(withIndexPath: indexPath) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
+        
+        if(self.presenter.getGif(withIndexPath: indexPath, storeType: StoreTypre.searchedGifs) != nil) { navigationController?.pushViewController(detailedVC, animated: true) }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let gif = self.presenter.modelService.getSearchedGif(withIndexPath: indexPath) {
+        if let gif = self.presenter.getGif(withIndexPath: indexPath, storeType: StoreTypre.searchedGifs) {
             let height: Double = {
                 let h = (gif.preview_gif?.height)!
                 if(h > 180) {
@@ -139,14 +134,6 @@ extension RLSearchViewController: PresenterDelegate {
 
 extension RLSearchViewController: UISearchBarDelegate {
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("searchBarTextDidBeginEditing")
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("searchBarTextDidEndEditing")
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarCancelButtonClicked")
     }
@@ -155,20 +142,15 @@ extension RLSearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         self.title = self.topicString
         self.collectionView.reloadData()
-        self.presenter.modelService.removeAllItims()
+        self.presenter.removeAllItims()
         
-//        let topicStr = self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString)
-//        let config = self.presenter.modelService.getConfigArr().filter { $0.isSelected == true }.first
-//        if let config = config {
-            self.presenter.startFetchingProcess(with: self.presenter.modelService.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
-                self?.collectionView.reloadData()
-//            }
+        self.presenter.startFetchingProcess(with: self.presenter.getQueryString(queryType: QueryType.searched, topicStr: self.topicString), storeType: .searchedGifs) { [weak self] (nil) in
+            self?.collectionView.reloadData()
         }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.topicString = searchText
-        print("searchBar///textDidChange")
     }
 }
 

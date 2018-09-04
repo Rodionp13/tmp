@@ -12,7 +12,6 @@ class RLConfigViewController: UIViewController {
     
     fileprivate let cellId = "configId"
     fileprivate var lastSelection: IndexPath!
-    fileprivate var configObjects: Array<ConfigModel>!
     
     fileprivate let presenter: Presenter2 = {
         let p = (UIApplication.shared.delegate as! RLAppDelegate).presenter
@@ -28,9 +27,8 @@ class RLConfigViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.confugureTable(table: self.tableView)
-        self.configObjects = self.presenter.modelService.getConfigArr()
         
-        if let configArr = self.presenter.modelService.getConfigArr() {
+        if let configArr = self.presenter.getConfigArr() {
             self.setLastSelectionOfConfigObj(configObjects: configArr)
         }
     }
@@ -44,15 +42,10 @@ class RLConfigViewController: UIViewController {
     }
     
     func setLastSelectionOfConfigObj(configObjects: Array<ConfigModel>) {
-        let selectedConfigObj = configObjects.filter { $0.isSelected == true }.first
-        guard let selected = selectedConfigObj, let configArr = self.presenter.modelService.getConfigArr(), let index = configArr.index(of: selected) else { return }
-        self.lastSelection = IndexPath.init(row: index, section: 0)
         
-//        configObjects.map { [weak self] (config) in
-//            if(config.isSelected == true) {
-//                self?.lastSelection = IndexPath(row: (self?.configObjects.index(of: config))!, section: 0)
-//            }
-//        }
+        let selectedConfigObj = configObjects.filter { $0.isSelected == true }.first
+        guard let selected = selectedConfigObj, let configArr = self.presenter.getConfigArr(), let index = configArr.index(of: selected) else { return }
+        self.lastSelection = IndexPath.init(row: index, section: 0)
     }
     
 }
@@ -60,13 +53,13 @@ class RLConfigViewController: UIViewController {
 extension RLConfigViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presenter.modelService.getConfigArrCount()
+        return self.presenter.getConfigArrCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let config = self.presenter.modelService.getConfigObj(with: indexPath) as! ConfigModel
         
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath) as! RLConfigTableViewCell
+        guard let config = self.presenter.getConfigObj(with: indexPath) else { return cell }
         if(config.isSelected == false) {
             cell.accessoryType = UITableViewCellAccessoryType.none
         } else {
@@ -80,10 +73,10 @@ extension RLConfigViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(self.lastSelection != nil) {
             tableView.cellForRow(at: self.lastSelection)?.accessoryType = UITableViewCellAccessoryType.none
-            self.presenter.modelService.getConfigObj(with: self.lastSelection)?.isSelected = false
+            self.presenter.getConfigObj(with: self.lastSelection)?.isSelected = false
         }
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-        self.presenter.modelService.getConfigObj(with: indexPath)?.isSelected = true
+        self.presenter.getConfigObj(with: indexPath)?.isSelected = true
         self.lastSelection = indexPath
         
         tableView.deselectRow(at: indexPath, animated: true)

@@ -38,8 +38,8 @@ class RLDetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = (UIApplication.shared.delegate as! RLAppDelegate).presenter
-        self.presenter.delegate = self
-        self.gif = self.presenter.modelService.getGif(withIndexPath: self.indexPath!, withType: self.storeType)
+//        self.presenter.delegate = self
+        self.gif = self.presenter.getGif(withIndexPath: self.indexPath!, storeType: self.storeType)
         
         self.downloadIndicator.isHidden = true
         self.configureButtons(downloadBttn: self.downloadBttn, shareBttn: self.shareBttn)
@@ -48,6 +48,11 @@ class RLDetailedViewController: UIViewController {
         self.configureImageView(withUrl: downsized_medium.url, and: self.mainIndicator)
         self.configureLabels(withGifData: self.gif, title: self.gifTitle, date: self.gifDate, size: self.gifSize)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter.delegate = self
     }
     
     private func configureButtons(downloadBttn:UIButton, shareBttn:UIButton) -> Void {
