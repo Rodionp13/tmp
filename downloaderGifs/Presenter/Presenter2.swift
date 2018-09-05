@@ -29,18 +29,20 @@ class Presenter2 {
             self?.modelService.startFetchingProcess(with: url, type: storeType) {
                 complition(nil);}
             }, isDisconnected: {[weak self] in
+                
                 self?.delegate?.connectionDownAlert!()
                 self?.cdManager.loadDataFromDB(with: nil, andDescriptor: nil) { [weak self] (queryRes) in
-                    guard let queryRes = queryRes as? Array<GiphyModel2> else { return }
                     
+                    guard let queryRes = queryRes as? Array<GiphyModel2> else { return }
                     self?.storeGifs(queryRes, in: StoreTypre.trendingGifs)
-                    complition(queryRes);
+                    complition(nil);
                 }
         })
     }
     
     
     public func fetchSmallGif(with indexPath: IndexPath, queryTypre: QueryType?, storeType: StoreTypre, topic: String?, and complition:@escaping(Data?)->Void) -> Void {
+        
         self.modelService.fetchSmallGif(with: indexPath, queryTypre: queryTypre, storeType: storeType, topic: topic, complitionBlock: { (data: Data?) in
                     complition(data);
                 }) { [weak self] (indises)  in

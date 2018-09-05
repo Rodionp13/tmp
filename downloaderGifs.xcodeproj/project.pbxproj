@@ -22,12 +22,15 @@
 		CE13054C2137528F00FAAB86 /* Connectivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13054B2137528F00FAAB86 /* Connectivity.m */; };
 		CE130550213765A800FAAB86 /* RLCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE13054F213765A800FAAB86 /* RLCoreDataManager.m */; };
 		CE13056F2137711F00FAAB86 /* downloaderGifs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE13056D2137711F00FAAB86 /* downloaderGifs.xcdatamodeld */; };
+		CE4BE0B9213FC8690040B68A /* RLConfigViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BE0B8213FC8690040B68A /* RLConfigViewControllerTest.swift */; };
+		CEAB276E213F339B0045277C /* RLPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB276D213F339B0045277C /* RLPresenterTest.swift */; };
 		CECE94E9213C60FA002965F7 /* RLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */; };
 		CECE94FA213CB650002965F7 /* RLConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94F9213CB650002965F7 /* RLConfigViewController.swift */; };
 		CECE94FC213CB677002965F7 /* RLConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */; };
 		CED70FF2213D1B3B009EDD86 /* RLMainVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */; };
 		CED70FFB213D1E35009EDD86 /* RlDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */; };
 		CED70FFD213D3B86009EDD86 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED70FFC213D3B86009EDD86 /* ConfigModel.swift */; };
+		CED94E93213FC08B00655950 /* RLCoreDataManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CED94E92213FC08B00655950 /* RLCoreDataManagerTest.m */; };
 		CEDB74F921360B6400528CFF /* RLDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */; };
 		CEDB75072136131B00528CFF /* RLAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB75062136131B00528CFF /* RLAppDelegate.swift */; };
 		CEE40924213DF00300F8D4EA /* RLJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */; };
@@ -75,6 +78,8 @@
 		CE13054E213765A800FAAB86 /* RLCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLCoreDataManager.h; sourceTree = "<group>"; };
 		CE13054F213765A800FAAB86 /* RLCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLCoreDataManager.m; sourceTree = "<group>"; };
 		CE13056E2137711F00FAAB86 /* downloaderGifs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = downloaderGifs.xcdatamodel; sourceTree = "<group>"; };
+		CE4BE0B8213FC8690040B68A /* RLConfigViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigViewControllerTest.swift; sourceTree = "<group>"; };
+		CEAB276D213F339B0045277C /* RLPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLPresenterTest.swift; sourceTree = "<group>"; };
 		CECE94E8213C60FA002965F7 /* RLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLSearchViewController.swift; sourceTree = "<group>"; };
 		CECE94F9213CB650002965F7 /* RLConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigViewController.swift; sourceTree = "<group>"; };
 		CECE94FB213CB677002965F7 /* RLConfigTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLConfigTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 		CED70FF9213D1E35009EDD86 /* downloaderGifsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "downloaderGifsTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RlDownloaderTests.m; sourceTree = "<group>"; };
 		CED70FFC213D3B86009EDD86 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
+		CED94E92213FC08B00655950 /* RLCoreDataManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLCoreDataManagerTest.m; sourceTree = "<group>"; };
 		CEDB74F821360B6400528CFF /* RLDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLDetailedViewController.swift; sourceTree = "<group>"; };
 		CEDB75062136131B00528CFF /* RLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLAppDelegate.swift; sourceTree = "<group>"; };
 		CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLJsonParserTest.m; sourceTree = "<group>"; };
@@ -266,8 +272,11 @@
 			isa = PBXGroup;
 			children = (
 				CED70FF1213D1B3B009EDD86 /* RLMainVCTests.swift */,
+				CE4BE0B8213FC8690040B68A /* RLConfigViewControllerTest.swift */,
+				CEAB276D213F339B0045277C /* RLPresenterTest.swift */,
 				CEE40925213DF7DF00F8D4EA /* ModelServiceTest.swift */,
 				CED70FFA213D1E35009EDD86 /* RlDownloaderTests.m */,
+				CED94E92213FC08B00655950 /* RLCoreDataManagerTest.m */,
 				CEE40923213DF00300F8D4EA /* RLJsonParserTest.m */,
 				CED70FF3213D1B3B009EDD86 /* Info.plist */,
 				CED70FF9213D1E35009EDD86 /* downloaderGifsTests-Bridging-Header.h */,
@@ -419,8 +428,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE40924213DF00300F8D4EA /* RLJsonParserTest.m in Sources */,
+				CEAB276E213F339B0045277C /* RLPresenterTest.swift in Sources */,
 				CED70FFB213D1E35009EDD86 /* RlDownloaderTests.m in Sources */,
+				CE4BE0B9213FC8690040B68A /* RLConfigViewControllerTest.swift in Sources */,
 				CED70FF2213D1B3B009EDD86 /* RLMainVCTests.swift in Sources */,
+				CED94E93213FC08B00655950 /* RLCoreDataManagerTest.m in Sources */,
 				CEE40929213DF7E900F8D4EA /* ModelServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

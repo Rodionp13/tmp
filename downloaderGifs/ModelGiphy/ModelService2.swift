@@ -24,8 +24,8 @@ class ModelService2 {
     private let jSonParser: RLJsonParser
     private var gifs = Array<GiphyModel2>()
     private var searchedGifs = Array<GiphyModel2>()
-    private var offset: Int = 0
     private var configObjArr = Array<ConfigModel>()
+    private var offset: Int = 0
     
     let itemArchiveUrl: NSURL = {
         let directories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -34,6 +34,7 @@ class ModelService2 {
         return locationUrl
     }()
     
+    
     init(downloader: RLDownloader, jSonParser: RLJsonParser) {
         self.downloader = downloader
         self.jSonParser = jSonParser
@@ -41,7 +42,7 @@ class ModelService2 {
         if let archiveItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveUrl.path!) as? [ConfigModel] {
                 self.configObjArr.append(contentsOf: archiveItems)
         } else {
-            configObjArr = [ConfigModel.init(rating: "y"), ConfigModel.init(rating: "g"), ConfigModel.init(rating: "pg")]
+            configObjArr = [ConfigModel.init(rating: "y", isSelected: false), ConfigModel.init(rating: "g", isSelected: true), ConfigModel.init(rating: "pg", isSelected: false)]
         }
     }
     
@@ -167,23 +168,28 @@ class ModelService2 {
     public func getGif(withIndexPath indexPath: IndexPath, withType: StoreTypre) -> GiphyModel2? {
         switch withType.rawValue {
         case 0:
-            return self.gifs[indexPath.row]
+            let count: Bool = self.gifs.count > 0
+            if(count) { return self.gifs[indexPath.row] } else { return nil }
         case 1:
-            return self.searchedGifs[indexPath.row]
+            let count: Bool = self.searchedGifs.count > 0
+            if(count) { return self.searchedGifs[indexPath.row] } else { return nil }
         default:
             return nil
         }
     }
     
     public func storeGifs(_ gifs: Array<GiphyModel2>, in store: StoreTypre) -> Void {
-        switch store.rawValue {
-        case 0:
-            self.gifs.append(contentsOf: gifs)
-            break;
-        case 1:
-            self.searchedGifs.append(contentsOf: gifs)
-            break;
-        default: break
+        let count: Bool = gifs.count >= 1
+        if(count) {
+            switch store.rawValue {
+            case 0:
+                self.gifs.append(contentsOf: gifs)
+                break;
+            case 1:
+                self.searchedGifs.append(contentsOf: gifs)
+                break;
+            default: break
+            }
         }
         
     }
@@ -199,8 +205,9 @@ class ModelService2 {
         }
     }
     
-    public func removeAllItims() -> Void {
+    public func removeAllItims() -> Bool {
         self.searchedGifs.removeAll()
+        return self.searchedGifs.count == 0
     }
     
     public func getConfigObj(with indexPath: IndexPath) -> ConfigModel? {

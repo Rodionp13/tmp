@@ -92,13 +92,23 @@ class RLMainViewController: UIViewController {
         let connection = Connectivity.isNetworkAvailable()
         
         self.presenter.fetchSmallGif(with: indexPath, queryTypre: QueryType.trending, storeType: .trendingGifs, topic: nil) { (data:Data?) in
-            if(connection) {
             cell.activityIndicator.stopAnimating()
             cell.activityIndicator.isHidden = true
-            }
+            
+            if(connection) {
             guard let data = data else { return }
             cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
             cell.imgView.image = UIImage.gif(data: data)
+                
+            } else {
+                guard let gif = self.presenter.getGif(withIndexPath: indexPath, storeType: StoreTypre.trendingGifs), let preview = gif.preview_gif, let originalName = preview.originalName else { return }
+                let url = RLFileManager.createDestinationUrl(originalName, andDirectory: FileManager.SearchPathDirectory.cachesDirectory)
+                guard let saveUrl = url else  { return }
+                let data = try? Data.init(contentsOf: saveUrl)
+                guard let d = data else { return }
+                cell.imgView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
+                cell.imgView.image = UIImage.gif(data: d)
+            }
         }
     }
     
@@ -159,18 +169,8 @@ extension RLMainViewController: PresenterDelegate {
 
 extension RLMainViewController: UISearchBarDelegate {
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("searchBarTextDidBeginEditing")
-    }
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
-        print("searchBarTextDidEndEditing")
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        print("searchBarCancelButtonClicked")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -182,7 +182,6 @@ extension RLMainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.topicStringToPass = searchText
-        print("searchBar///textDidChange")
     }
 }
 

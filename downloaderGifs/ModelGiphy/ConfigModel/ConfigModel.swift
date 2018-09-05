@@ -14,9 +14,9 @@ class ConfigModel: NSObject, NSCoding {
     var isSelected: Bool
     
     
-    init(rating: String) {
+    init(rating: String, isSelected: Bool) {
         self.rating = rating
-        self.isSelected = false
+        self.isSelected = isSelected
     }
     
     func encode(with aCoder: NSCoder) {
