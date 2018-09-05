@@ -143,6 +143,8 @@ extension RLMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 let h = (gif.preview_gif?.height)!
                 if(h > 180) {
                     return 180
+                } else if(h < 90) {
+                    return 120
                 }
                 return h
             }()

@@ -25,10 +25,21 @@ class RLCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.addSubview(self.imgView)
         self.addSubview(self.activityIndicator)
+        self.setUpConstraints(to: self.activityIndicator)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension UICollectionViewCell {
+    func setUpConstraints(to indicator: UIActivityIndicatorView) {
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        indicator.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        indicator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        indicator.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+    }
 }
